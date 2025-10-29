@@ -1,12 +1,19 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { useTheme } from "@/components/theme-provider"
 import { motion } from "framer-motion"
 
 export function Header() {
+  const { theme } = useTheme()
+
+  // Pick the correct logo based on theme
+  const logoSrc = theme === "dark" ? "/logo-dark.png" : "/logo-light.png"
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -16,16 +23,27 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
+          {/* --- LOGO --- */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="flex items-center gap-2"
           >
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-primary/60" />
-            <span className="text-xl font-bold text-foreground">App Guts</span>
+            <Link href="/" className="flex items-center gap-2">
+              <Image
+                src={logoSrc}
+                alt="App Guts Logo"
+                width={32}
+                height={32}
+                priority
+                className="rounded-md transition-opacity duration-300"
+              />
+              <span className="text-xl font-bold text-foreground"></span>
+            </Link>
           </motion.div>
 
+          {/* --- NAVIGATION LINKS --- */}
           <nav className="hidden gap-8 md:flex">
             {["Home", "Products", "About", "Contact"].map((item, index) => (
               <motion.div
@@ -44,6 +62,7 @@ export function Header() {
             ))}
           </nav>
 
+          {/* --- ACTION BUTTONS --- */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
