@@ -1,7 +1,6 @@
 "use client"
 
-import type React from "react"
-import { createContext, useContext, useEffect, useState } from "react"
+import React, { createContext, useContext, useEffect, useState } from "react"
 
 type Theme = "light" | "dark"
 
@@ -28,11 +27,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const applyTheme = (newTheme: Theme) => {
     const html = document.documentElement
-    if (newTheme === "dark") {
-      html.classList.add("dark")
-    } else {
-      html.classList.remove("dark")
-    }
+    html.classList.toggle("dark", newTheme === "dark")
     localStorage.setItem("theme", newTheme)
   }
 
@@ -42,13 +37,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     applyTheme(newTheme)
   }
 
-  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
+  // 👇 Prevents flicker / mismatch on mobile
+  if (!mounted) return null
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  )
 }
 
 export function useTheme() {
   const context = useContext(ThemeContext)
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider")
-  }
+  if (!context) throw new Error("useTheme must be used within a ThemeProvider")
   return context
 }
