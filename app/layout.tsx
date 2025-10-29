@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { Inter, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
-import Script from "next/script"
+import TawkChat from "@/components/TawkChat"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "App Guts",
     images: [
       {
-        url: "/og-image.png", // /public/og-image.png
+        url: "/og-image.png",
         width: 1500,
         height: 498,
         alt: "App Guts - SaaS Solutions for Modern Businesses",
@@ -68,23 +68,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider>{children}</ThemeProvider>
+        <TawkChat />
         <Analytics />
-
-        {/* ✅ Tawk.to Live Chat Script */}
-        <Script id="tawk-to" strategy="afterInteractive">
-          {`
-            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-            (function() {
-              var s1 = document.createElement("script"),
-                  s0 = document.getElementsByTagName("script")[0];
-              s1.async = true;
-              s1.src = 'https://embed.tawk.to/69021e3cb22c021953b669ac/1j8o4c7mn';
-              s1.charset = 'UTF-8';
-              s1.setAttribute('crossorigin', '*');
-              s0.parentNode.insertBefore(s1, s0);
-            })();
-          `}
-        </Script>
       </body>
     </html>
   )
