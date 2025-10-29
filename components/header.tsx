@@ -5,14 +5,11 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { useTheme } from "@/components/theme-provider"
 import { motion } from "framer-motion"
+import { useTheme } from "@/components/theme-provider"
 
 export function Header() {
   const { theme } = useTheme()
-
-  // Pick the correct logo based on theme
-  const logoSrc = theme === "dark" ? "/logo-dark.png" : "/logo-light.png"
 
   return (
     <motion.header
@@ -30,20 +27,34 @@ export function Header() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="flex items-center gap-2"
           >
-            <Link href="/" className="flex items-center gap-2">
+            <div className="relative flex items-center">
+              {/* Light logo */}
               <Image
-                src={logoSrc}
-                alt="App Guts Logo"
-                width={32}
-                height={32}
+                src="/logo-light.png"
+                alt="App Guts Light Logo"
+                width={140}
+                height={140}
                 priority
-                className="rounded-md transition-opacity duration-300"
+                className={`h-10 w-auto sm:h-12 md:h-14 transition-opacity duration-300 ${
+                  theme === "dark" ? "opacity-0 absolute" : "opacity-100"
+                }`}
               />
-              <span className="text-xl font-bold text-foreground"></span>
-            </Link>
+
+              {/* Dark logo */}
+              <Image
+                src="/logo-dark.png"
+                alt="App Guts Dark Logo"
+                width={140}
+                height={140}
+                priority
+                className={`h-10 w-auto sm:h-12 md:h-14 transition-opacity duration-300 ${
+                  theme === "dark" ? "opacity-100" : "opacity-0 absolute"
+                }`}
+              />
+            </div>
           </motion.div>
 
-          {/* --- NAVIGATION LINKS --- */}
+          {/* --- NAV LINKS --- */}
           <nav className="hidden gap-8 md:flex">
             {["Home", "Products", "About", "Contact"].map((item, index) => (
               <motion.div
@@ -62,7 +73,7 @@ export function Header() {
             ))}
           </nav>
 
-          {/* --- ACTION BUTTONS --- */}
+          {/* --- RIGHT ACTIONS (THEME + AUTH) --- */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
