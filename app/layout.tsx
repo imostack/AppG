@@ -10,9 +10,53 @@ const inter = Inter({ subsets: ["latin"] })
 const geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "App Guts Limited - Enterprise SaaS Platform",
-  description: "Powerful SaaS platform for modern teams",
+  metadataBase: new URL("https://appguts.com"),
+  title: {
+    default: "App Guts Limited - Enterprise SaaS Platform",
+    template: "%s | App Guts",
+  },
+  description:
+    "App Guts Limited is a forward-thinking SaaS company empowering modern teams with scalable, intelligent digital solutions.",
   generator: "App Guts",
+  applicationName: "App Guts Platform",
+  keywords: [
+    "SaaS",
+    "App Guts",
+    "Alprosel Tech",
+    "enterprise software",
+    "cloud platform",
+    "business automation",
+  ],
+  authors: [{ name: "App Guts Limited", url: "https://appguts.com" }],
+  openGraph: {
+    title: "App Guts Limited - Enterprise SaaS Platform",
+    description:
+      "App Guts Limited is a forward-thinking SaaS company empowering modern teams with scalable, intelligent digital solutions.",
+    url: "https://appguts.com",
+    siteName: "App Guts",
+    images: [
+      {
+        url: "/og-image.png", // /public/og-image.png
+        width: 1500,
+        height: 498,
+        alt: "App Guts - SaaS Solutions for Modern Businesses",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "App Guts Limited - Enterprise SaaS Platform",
+    description:
+      "App Guts Limited is a forward-thinking SaaS company empowering modern teams with scalable, intelligent digital solutions.",
+    images: ["/og-image.png"],
+    creator: "@appguts",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 }
 
 export default function RootLayout({
