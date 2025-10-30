@@ -17,7 +17,7 @@ export function AboutSection() {
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button asChild>
-                <Link href="official-merger-announcement-alprosel-appguts.php">Learn More About the Merger</Link>
+                <Link href="https://alproseltech.com/official-merger-announcement-alprosel-appguts.php">Learn More About the Merger</Link>
               </Button>
             </motion.div>
           </div>
