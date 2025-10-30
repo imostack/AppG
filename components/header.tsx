@@ -78,15 +78,17 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="hidden gap-3 md:flex items-center"
+            className="flex items-center gap-3"
           >
             <ThemeToggle />
-            <Button variant="ghost" asChild>
-              <Link href="/sign-in">Sign In</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/sign-up">Get Started</Link>
-            </Button>
+            <div className="hidden md:flex items-center gap-3">
+              <Button variant="ghost" asChild>
+                <Link href="/sign-in">Sign In</Link>
+              </Button>
+              <Button asChild>
+                <Link href="/sign-up">Get Started</Link>
+              </Button>
+            </div>
           </motion.div>
 
           <MobileNav />
