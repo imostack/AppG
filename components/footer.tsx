@@ -8,39 +8,62 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border/40 bg-card/50 px-4 py-12 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid gap-8 md:grid-cols-4">
-          {/* --- Logo + Description --- */}
-          <div>
-            <div className="mb-4 flex items-center gap-2">
-              <div className="relative flex items-center">
-                {/* Light logo */}
-                <Image
-                  src="/logo-light.png"
-                  alt="App Guts Light Logo"
-                  width={140}
-                  height={140}
-                  className={`h-8 w-auto sm:h-10 transition-opacity duration-300 ${
-                    theme === "dark" ? "opacity-0 absolute" : "opacity-100"
-                  }`}
-                />
+  <div className="mx-auto max-w-6xl">
+    <div className="grid gap-8 md:grid-cols-4">
+      {/* --- Logo + Description --- */}
+      <div>
+        <div className="mb-4 flex items-center gap-2">
+          <div className="relative flex items-center">
+            {/* Light logo */}
+            <Image
+              src="/logo-light.png"
+              alt="App Guts Light Logo"
+              width={140}
+              height={140}
+              className={`h-8 w-auto sm:h-10 transition-opacity duration-300 ${
+                theme === "dark" ? "opacity-0 absolute" : "opacity-100"
+              }`}
+            />
 
-                {/* Dark logo */}
-                <Image
-                  src="/logo-dark.png"
-                  alt="App Guts Dark Logo"
-                  width={140}
-                  height={140}
-                  className={`h-8 w-auto sm:h-10 transition-opacity duration-300 ${
-                    theme === "dark" ? "opacity-100" : "opacity-0 absolute"
-                  }`}
-                />
-              </div>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              Building digital products that power everyday life.
-            </p>
+            {/* Dark logo */}
+            <Image
+              src="/logo-dark.png"
+              alt="App Guts Dark Logo"
+              width={140}
+              height={140}
+              className={`h-8 w-auto sm:h-10 transition-opacity duration-300 ${
+                theme === "dark" ? "opacity-100" : "opacity-0 absolute"
+              }`}
+            />
           </div>
+        </div>
+
+        <p className="text-sm text-muted-foreground mb-4">
+          Building digital products that power everyday life.
+        </p>
+
+        {/* --- Contact Emails --- */}
+        <div className="space-y-1">
+          <p className="text-sm text-muted-foreground">
+            <span className="font-medium text-foreground">General Inquiries:</span>{" "}
+            <a
+              href="mailto:hello@appguts.com"
+              className="text-primary hover:underline"
+            >
+              hello@appguts.com
+            </a>
+          </p>
+          <p className="text-sm text-muted-foreground">
+            <span className="font-medium text-foreground">Support:</span>{" "}
+            <a
+              href="mailto:support@appguts.com"
+              className="text-primary hover:underline"
+            >
+              support@appguts.com
+            </a>
+          </p>
+        </div>
+      </div>
 
           {/* --- Products --- */}
           <div>
