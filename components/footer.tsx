@@ -106,6 +106,11 @@ export function Footer() {
                   Careers
                 </a>
               </li>
+              <li>
+                <a href="/pricing" className="hover:text-foreground transition-colors">
+                  Pricing
+                </a>
+              </li>
             </ul>
           </div>
 
