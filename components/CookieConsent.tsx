@@ -16,27 +16,20 @@ export default function CookieConsent() {
   const handleAccept = () => {
     localStorage.setItem("cookie-consent", "accepted")
     setVisible(false)
-    // ✅ Optionally: trigger analytics or tracking scripts here
+    // ✅ Trigger analytics or tracking scripts here (if needed)
   }
 
   const handleDecline = () => {
     localStorage.setItem("cookie-consent", "declined")
     setVisible(false)
-    // 🚫 Do not trigger analytics or tracking scripts
+    // 🚫 Do not load analytics or tracking scripts
   }
 
   if (!visible) return null
 
   return (
     <div
-      className="
-        fixed bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-md
-        bg-white dark:bg-neutral-900
-        border border-neutral-200 dark:border-neutral-700
-        shadow-lg rounded-2xl p-4 z-[9999]
-        flex flex-col gap-3 sm:gap-2 sm:flex-row sm:items-center sm:justify-between
-        transition-all duration-500 animate-fade-in
-      "
+      className="fixed bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-md bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow-lg rounded-2xl p-4 z-[9999] flex flex-col gap-3 sm:gap-2 sm:flex-row sm:items-center sm:justify-between transition-all duration-500 animate-fade-in"
     >
       <div className="flex flex-col gap-1">
         <p className="text-sm text-neutral-800 dark:text-neutral-200 leading-snug">
@@ -57,23 +50,13 @@ export default function CookieConsent() {
       <div className="flex gap-2 mt-2 sm:mt-0">
         <button
           onClick={handleDecline}
-          className="
-            border border-neutral-300 dark:border-neutral-700
-            text-neutral-700 dark:text-neutral-300
-            px-4 py-2 rounded-xl text-sm
-            hover:bg-neutral-100 dark:hover:bg-neutral-800
-            transition-colors
-          "
+          className="border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 px-4 py-2 rounded-xl text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
         >
           Decline
         </button>
         <button
           onClick={handleAccept}
-          className="
-            bg-[#61022e] hover:bg-[#7a0940]
-            text-white font-medium text-sm
-            px-4 py-2 rounded-xl shadow-md transition-colors
-          "
+          className="bg-[#61022e] hover:bg-[#7a0940] text-white font-medium text-sm px-4 py-2 rounded-xl shadow-md transition-colors"
         >
           Accept
         </button>
