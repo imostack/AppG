@@ -1,53 +1,99 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
 export default function CookieConsent() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const consent = localStorage.getItem("cookieConsent");
-    if (!consent) setVisible(true);
-  }, []);
+    const consent = localStorage.getItem("cookie-consent")
+    if (!consent) {
+      const timer = setTimeout(() => setVisible(true), 1000)
+      return () => clearTimeout(timer)
+    }
+  }, [])
 
-  const acceptCookies = () => {
-    localStorage.setItem("cookieConsent", "accepted");
-    setVisible(false);
-  };
+  const handleAccept = () => {
+    localStorage.setItem("cookie-consent", "accepted")
+    setVisible(false)
+    // ✅ Optionally: trigger analytics or tracking scripts here
+  }
 
-  const declineCookies = () => {
-    localStorage.setItem("cookieConsent", "declined");
-    setVisible(false);
-  };
+  const handleDecline = () => {
+    localStorage.setItem("cookie-consent", "declined")
+    setVisible(false)
+    // 🚫 Do not trigger analytics or tracking scripts
+  }
 
-  if (!visible) return null;
+  if (!visible) return null
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-gray-900 text-white p-4 rounded-2xl shadow-lg w-[90%] md:w-auto flex flex-col md:flex-row items-center gap-3">
-      <p className="text-sm text-center md:text-left">
-        🍪 We use cookies to improve your experience and analyze site traffic.{" "}
-        <a
-          href="/cookie-policy"
-          className="underline text-blue-400 hover:text-blue-300 ml-1"
-        >
-          Learn more
-        </a>
-        .
-      </p>
-      <div className="flex gap-2">
+    <div
+      className="
+        fixed bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-md
+        bg-white dark:bg-neutral-900
+        border border-neutral-200 dark:border-neutral-700
+        shadow-lg rounded-2xl p-4 z-[9999]
+        flex flex-col gap-3 sm:gap-2 sm:flex-row sm:items-center sm:justify-between
+        transition-all duration-500 animate-fade-in
+      "
+    >
+      <div className="flex flex-col gap-1">
+        <p className="text-sm text-neutral-800 dark:text-neutral-200 leading-snug">
+          🍪 <span className="font-semibold text-[#61022e]">App Guts</span> uses cookies to improve your experience and analyze traffic.
+        </p>
+        <p className="text-xs text-neutral-600 dark:text-neutral-400">
+          Read our{" "}
+          <a
+            href="/cookie-policy"
+            className="underline text-[#61022e] hover:text-[#7a0940] transition-colors"
+          >
+            Cookie Policy
+          </a>
+          .
+        </p>
+      </div>
+
+      <div className="flex gap-2 mt-2 sm:mt-0">
         <button
-          onClick={acceptCookies}
-          className="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium py-1 px-3 rounded-lg"
-        >
-          Accept
-        </button>
-        <button
-          onClick={declineCookies}
-          className="bg-gray-700 hover:bg-gray-600 text-sm font-medium py-1 px-3 rounded-lg"
+          onClick={handleDecline}
+          className="
+            border border-neutral-300 dark:border-neutral-700
+            text-neutral-700 dark:text-neutral-300
+            px-4 py-2 rounded-xl text-sm
+            hover:bg-neutral-100 dark:hover:bg-neutral-800
+            transition-colors
+          "
         >
           Decline
         </button>
+        <button
+          onClick={handleAccept}
+          className="
+            bg-[#61022e] hover:bg-[#7a0940]
+            text-white font-medium text-sm
+            px-4 py-2 rounded-xl shadow-md transition-colors
+          "
+        >
+          Accept
+        </button>
       </div>
+
+      <style jsx>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.6s ease forwards;
+        }
+      `}</style>
     </div>
-  );
+  )
 }
