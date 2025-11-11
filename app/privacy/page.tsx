@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Link from "next/link"
 
 export default function PrivacyPage() {
-  return (
-    <div className="min-h-screen px-4 py-20 sm:px-6 lg:px-8">
-        <Header />
-        
-      <div className="mx-auto max-w-3xl space-y-6">
+    return (
+  <div className="min-h-screen flex flex-col">
+      <Header />
+
+      <main className="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
         <h1 className="text-4xl font-bold">App Guts Privacy Notice</h1>
         <p className="text-muted-foreground">Effective Date: November 11, 2025</p>
 
@@ -92,7 +92,7 @@ export default function PrivacyPage() {
         <Link href="/" className="text-primary hover:underline">
           ← Back to Home
         </Link>
-      </div>
+      </main>
       <Footer />
     </div>
   )
