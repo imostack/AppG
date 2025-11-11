@@ -1,10 +1,14 @@
 "use client"
 
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 import Link from "next/link"
 
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen px-4 py-20 sm:px-6 lg:px-8">
+        <Header />
+        <Footer />
       <div className="mx-auto max-w-3xl space-y-6">
         <h1 className="text-4xl font-bold">App Guts Privacy Notice</h1>
         <p className="text-muted-foreground">Effective Date: November 11, 2025</p>
