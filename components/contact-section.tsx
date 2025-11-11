@@ -2,6 +2,7 @@
 
 import type React from "react"
 
+import { Linkedin, Instagram } from "lucide-react"
 import { motion } from "framer-motion"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { Button } from "@/components/ui/button"
@@ -105,34 +106,32 @@ export function ContactSection() {
           </motion.form>
         </ScrollReveal>
 
-        <ScrollReveal>
-          <div className="mt-12 flex justify-center gap-6">
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.2 }}
-              className="text-2xl text-muted-foreground hover:text-primary transition-colors"
-              aria-label="LinkedIn"
-            >
-              in
-            </motion.a>
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.2 }}
-              className="text-2xl text-muted-foreground hover:text-primary transition-colors"
-              aria-label="X"
-            >
-              𝕏
-            </motion.a>
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.2 }}
-              className="text-2xl text-muted-foreground hover:text-primary transition-colors"
-              aria-label="Instagram"
-            >
-              📷
-            </motion.a>
-          </div>
-        </ScrollReveal>
+       <ScrollReveal>
+  <div className="mt-12 flex justify-center gap-6">
+    <motion.a
+      href="https://www.linkedin.com/company/app-guts-limited/"
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ scale: 1.2 }}
+      className="text-muted-foreground hover:text-primary transition-colors no-underline"
+      aria-label="LinkedIn"
+    >
+      <Linkedin className="w-6 h-6" />
+    </motion.a>
+
+    <motion.a
+      href="https://www.instagram.com/appguts"
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ scale: 1.2 }}
+      className="text-muted-foreground hover:text-primary transition-colors no-underline"
+      aria-label="Instagram"
+    >
+      <Instagram className="w-6 h-6" />
+    </motion.a>
+  </div>
+</ScrollReveal>
+
       </div>
     </section>
   )
