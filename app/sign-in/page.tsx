@@ -28,16 +28,16 @@ export default function SignInPage() {
               <Image
                 src="/logo-light.png"
                 alt="App Guts Logo"
-                width={40}
-                height={40}
+                width={80}
+                height={80}
                 className="block dark:hidden"
                 priority
               />
               <Image
                 src="/logo-dark.png"
                 alt="App Guts Logo"
-                width={40}
-                height={40}
+                width={80}
+                height={80}
                 className="hidden dark:block"
                 priority
               />
