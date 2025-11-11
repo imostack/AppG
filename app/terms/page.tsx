@@ -6,12 +6,11 @@ import Link from "next/link"
 
 export default function TermsPage() {
   return (
-    
-    <div className="min-h-screen px-4 py-20 sm:px-6 lg:px-8">
-         <Header />
+    <div className="min-h-screen flex flex-col">
+      <Header />
 
-      <div className="flex-grow max-w-5xl mx-auto p-6 pt-24">
-        <h1 className="text-4xl font-bold">App Guts Terms of Service</h1>
+      <main className="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <h1 className="text-4xl font-bold mb-6">App Guts Terms of Service</h1>
         <p className="text-muted-foreground">Effective Date: November 11, 2025</p>
 
         <section className="space-y-2">
@@ -70,8 +69,8 @@ export default function TermsPage() {
         <Link href="/" className="text-primary hover:underline">
           ← Back to Home
         </Link>
-      </div>
-      
+      </main>
+
       <Footer />
     </div>
   )
