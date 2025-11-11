@@ -8,7 +8,6 @@ export default function TermsPage() {
   return (
     <div className="min-h-screen px-4 py-20 sm:px-6 lg:px-8">
          <Header />
-                <Footer />
       <div className="mx-auto max-w-3xl space-y-6">
         <h1 className="text-4xl font-bold">App Guts Terms of Service</h1>
         <p className="text-muted-foreground">Effective Date: November 11, 2025</p>
@@ -70,6 +69,7 @@ export default function TermsPage() {
           ← Back to Home
         </Link>
       </div>
+      <Footer />
     </div>
   )
 }
