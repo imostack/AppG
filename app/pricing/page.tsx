@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer"
 export default function PricingPage() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      <header />
 
       <main className="flex-grow max-w-5xl mx-auto p-6">
         <h1 className="text-3xl font-bold mb-6 text-center">Pricing</h1>
