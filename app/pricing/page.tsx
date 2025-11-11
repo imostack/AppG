@@ -1,13 +1,11 @@
 // app/pricing/page.tsx
-import Menubar from "@/components/menubar"
-import NavigationMenu from "@/components/navigation-menu"
-import { Footer } from "@/components/footer"
+import { Header } from "@/components/header"
+import Footer from "@/components/ui/footer"
 
 export default function PricingPage() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Menubar />
-       <NavigationMenu />
+      <Header />
 
        <main className="flex-grow max-w-5xl mx-auto p-6 pt-24">
         <h1 className="text-3xl font-bold mb-6 text-center">Pricing</h1>
