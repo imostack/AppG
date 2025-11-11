@@ -2,20 +2,22 @@
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { ScrollReveal } from "@/components/scroll-reveal"
 import Link from "next/link"
 
 export default function PrivacyPage() {
     return (
-  <div className="min-h-screen flex flex-col">
+  <div className="min-h-screen px-4 py-20 sm:px-6 lg:px-8 bg-background">
+      <ScrollReveal>
       <Header />
 
-      <main className="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
-        <h1 className="text-4xl font-bold">App Guts Privacy Notice</h1>
+      <main className="mx-auto max-w-3xl rounded-lg border border-border/40 bg-card/50 p-8 shadow-md backdrop-blur-sm space-y-6">
+        <h1 className="text-4xl font-bold text-foreground">App Guts Privacy Notice</h1>
         <p className="text-muted-foreground">Effective Date: November 11, 2025</p>
 
         <section className="space-y-2">
-          <h2 className="text-2xl font-semibold">1. Introduction</h2>
-          <p>
+          <h2 className="text-2xl font-semibold text-foreground">1. Introduction</h2>
+          <p className="text-muted-foreground">
             App Guts Limited (“App Guts”, “we”, “our”, or “us”) is committed to protecting your
             privacy. This Privacy Notice explains how we collect, use, disclose, and safeguard your
             information when you use our software-as-a-service (SaaS) platforms and related
@@ -24,8 +26,8 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-2xl font-semibold">2. Information We Collect</h2>
-          <ul className="list-disc list-inside space-y-1">
+          <h2 className="text-2xl font-semibold text-foreground">2. Information We Collect</h2>
+          <ul className="list-disc list-inside space-y-1 text-muted-foreground">
             <li>
               <strong>Personal Information:</strong> Name, email address, company details, billing
               information, login credentials.
@@ -41,9 +43,9 @@ export default function PrivacyPage() {
           </ul>
         </section>
 
-        <section className="space-y-2">
-          <h2 className="text-2xl font-semibold">3. How We Use Your Information</h2>
-          <ul className="list-disc list-inside space-y-1">
+        <section className="space-y-2 text-muted-foreground">
+          <h2 className="text-2xl font-semibold text-foreground">3. How We Use Your Information</h2>
+          <ul className="list-disc list-inside space-y-1 text-muted-foreground">
             <li>Provide, operate, and maintain the Services</li>
             <li>Process transactions and manage accounts</li>
             <li>Communicate with you regarding updates, support, and promotional offers</li>
@@ -52,7 +54,7 @@ export default function PrivacyPage() {
           </ul>
         </section>
 
-        <section className="space-y-2">
+        <section className="space-y-2 text-muted-foreground">
           <h2 className="text-2xl font-semibold">4. Information Sharing and Disclosure</h2>
           <p>
             We may share your information with trusted partners and service providers who assist us
@@ -61,7 +63,7 @@ export default function PrivacyPage() {
           </p>
         </section>
 
-        <section className="space-y-2">
+        <section className="space-y-2 text-muted-foreground">
           <h2 className="text-2xl font-semibold">5. Data Security</h2>
           <p>
             We implement industry-standard security measures to protect your information from
@@ -69,22 +71,22 @@ export default function PrivacyPage() {
           </p>
         </section>
 
-        <section className="space-y-2">
+        <section className="space-y-2 text-muted-foreground">
           <h2 className="text-2xl font-semibold">6. Your Rights and Choices</h2>
           <p>You have the right to access, correct, or delete your personal data. Contact us to exercise these rights.</p>
         </section>
 
-        <section className="space-y-2">
+        <section className="space-y-2 text-muted-foreground">
           <h2 className="text-2xl font-semibold">7. Data Retention</h2>
           <p>We retain your data as long as necessary to provide the Services and comply with legal obligations.</p>
         </section>
 
-        <section className="space-y-2">
+        <section className="space-y-2 text-muted-foreground">
           <h2 className="text-2xl font-semibold">8. International Transfers</h2>
           <p>Your information may be processed in countries outside your residence. We ensure adequate protections in accordance with applicable laws.</p>
         </section>
 
-        <section className="space-y-2">
+        <section className="space-y-2 text-muted-foreground">
           <h2 className="text-2xl font-semibold">9. Contact Us</h2>
           <p>For questions or concerns about this Privacy Notice, please contact us at <a href="mailto:privacy@appguts.com" className="text-primary hover:underline">privacy@appguts.com</a>.</p>
         </section>
