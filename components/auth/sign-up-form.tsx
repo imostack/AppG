@@ -1,22 +1,71 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { motion } from "framer-motion"
+import { supabase } from "@/lib/supabaseClient"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { motion } from "framer-motion"
 
 export function SignUpForm() {
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirm, setConfirm] = useState("")
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError(null)
+    setSuccess(null)
+
+    if (password !== confirm) {
+      setError("Passwords do not match.")
+      return
+    }
+
     setIsLoading(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { full_name: name },
+        emailRedirectTo: `${window.location.origin}/dashboard`,
+      },
+    })
+
     setIsLoading(false)
+
+    if (error) {
+      setError(error.message)
+      return
+    }
+
+    if (data.user && !data.user.confirmed_at) {
+      setSuccess("Check your email to confirm your account.")
+    } else {
+      router.push("/dashboard")
+    }
+  }
+
+  // OAuth Provider Sign-up/Login
+  const handleOAuth = async (provider: "google" | "github") => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: `${window.location.origin}/dashboard`,
+      },
+    })
+
+    if (error) {
+      setError(error.message)
+    }
   }
 
   return (
@@ -34,9 +83,10 @@ export function SignUpForm() {
         <Input
           id="name"
           type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           placeholder="John Doe"
           required
-          className="bg-card border-border/40 text-foreground placeholder:text-muted-foreground"
         />
       </div>
 
@@ -47,9 +97,10 @@ export function SignUpForm() {
         <Input
           id="email"
           type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
           required
-          className="bg-card border-border/40 text-foreground placeholder:text-muted-foreground"
         />
       </div>
 
@@ -60,9 +111,10 @@ export function SignUpForm() {
         <Input
           id="password"
           type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="••••••••"
           required
-          className="bg-card border-border/40 text-foreground placeholder:text-muted-foreground"
         />
       </div>
 
@@ -73,11 +125,15 @@ export function SignUpForm() {
         <Input
           id="confirm"
           type="password"
+          value={confirm}
+          onChange={(e) => setConfirm(e.target.value)}
           placeholder="••••••••"
           required
-          className="bg-card border-border/40 text-foreground placeholder:text-muted-foreground"
         />
       </div>
+
+      {error && <p className="text-sm text-red-500">{error}</p>}
+      {success && <p className="text-sm text-green-500">{success}</p>}
 
       <Button type="submit" className="w-full" disabled={isLoading}>
         {isLoading ? "Creating account..." : "Create account"}
@@ -93,21 +149,31 @@ export function SignUpForm() {
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <Button variant="outline" type="button" className="border-border/40 bg-transparent">
+        <Button
+          variant="outline"
+          type="button"
+          className="border-border/40 bg-transparent"
+          onClick={() => handleOAuth("google")}
+        >
           Google
         </Button>
-        <Button variant="outline" type="button" className="border-border/40 bg-transparent">
+        <Button
+          variant="outline"
+          type="button"
+          className="border-border/40 bg-transparent"
+          onClick={() => handleOAuth("github")}
+        >
           GitHub
         </Button>
       </div>
 
       <p className="text-xs text-muted-foreground text-center">
         By signing up, you agree to our{" "}
-        <a href="#" className="text-primary hover:text-primary/80 transition-colors">
+        <a href="/terms" className="text-primary hover:text-primary/80 transition-colors">
           Terms of Service
         </a>{" "}
         and{" "}
-        <a href="#" className="text-primary hover:text-primary/80 transition-colors">
+        <a href="/privacy" className="text-primary hover:text-primary/80 transition-colors">
           Privacy Policy
         </a>
       </p>
