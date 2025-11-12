@@ -70,17 +70,17 @@ export function Footer() {
             <h4 className="mb-4 font-semibold text-foreground">Products</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#products" className="hover:text-foreground transition-colors">
+                <a href="/#products" className="hover:text-foreground transition-colors">
                   AccessRA
                 </a>
               </li>
               <li>
-                <a href="#products" className="hover:text-foreground transition-colors">
+                <a href="/#products" className="hover:text-foreground transition-colors">
                   Events Kona
                 </a>
               </li>
               <li>
-                <a href="#products" className="hover:text-foreground transition-colors">
+                <a href="/#products" className="hover:text-foreground transition-colors">
                   Custom Apps
                 </a>
               </li>
@@ -92,7 +92,7 @@ export function Footer() {
             <h4 className="mb-4 font-semibold text-foreground">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#about" className="hover:text-foreground transition-colors">
+                <a href="/#about" className="hover:text-foreground transition-colors">
                   About
                 </a>
               </li>
@@ -129,7 +129,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-foreground transition-colors">
+                <a href="/#contact" className="hover:text-foreground transition-colors">
                   Contact
                 </a>
               </li>
