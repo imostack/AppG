@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import Link from "next/link"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
@@ -81,12 +82,12 @@ export function SignInForm() {
           <Label htmlFor="password" className="text-foreground">
             Password
           </Label>
-          <a
+          <Link
             href="/forgot-password"
             className="text-sm text-primary hover:text-primary/80 transition-colors"
           >
             Forgot?
-          </a>
+          </Link>
         </div>
         <Input
           id="password"
