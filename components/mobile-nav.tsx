@@ -41,19 +41,19 @@ export function MobileNav() {
                 Home
               </Link>
               <Link
-                href="#products"
+                href="/#products"
                 className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-card transition-colors"
               >
                 Products
               </Link>
               <Link
-                href="#about"
+                href="/#about"
                 className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-card transition-colors"
               >
                 About
               </Link>
               <Link
-                href="#contact"
+                href="/#contact"
                 className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-card transition-colors"
               >
                 Contact
