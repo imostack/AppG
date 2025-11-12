@@ -1,29 +1,25 @@
-// app/dashboard/page.tsx
 "use client"
 
-import { useEffect, useState } from "react"
-import { supabase } from "@/lib/supabaseClient"
+import { useEffect } from "react"
 import { useRouter } from "next/navigation"
+import { useAuth } from "@/hooks/useAuth"
 
 export default function DashboardPage() {
+  const { user, loading } = useAuth()
   const router = useRouter()
-  const [user, setUser] = useState<any>(null)
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      if (!data.user) {
-        router.push("/sign-in")
-      } else {
-        setUser(data.user)
-      }
-    })
-  }, [router])
+    if (!loading && !user) {
+      router.push("/sign-in") // redirect if not logged in
+    }
+  }, [user, loading, router])
+
+  if (loading) return <p>Loading...</p>
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h1 className="text-2xl font-semibold">
-        Welcome, {user?.email || "loading..."} 👋
-      </h1>
+    <div>
+      <h1>Welcome, {user?.email}</h1>
+      <p>Your dashboard will be Live soon. Please check back later.</p>
     </div>
   )
 }
