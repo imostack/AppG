@@ -2,13 +2,12 @@
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { ScrollReveal } from "@/components/scroll-reveal"
 import Link from "next/link"
 
 export default function PrivacyPage() {
-    return (
+  return (
   <div className="min-h-screen px-4 py-20 sm:px-6 lg:px-8 bg-background">
-      <ScrollReveal>
+      
       <Header />
 
       <main className="mx-auto max-w-3xl rounded-lg border border-border/40 bg-card/50 p-8 shadow-md backdrop-blur-sm space-y-6">
