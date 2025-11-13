@@ -1,58 +1,68 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { motion } from "framer-motion"
-import { supabase } from "@/lib/supabaseClient"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import type React from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import { supabase } from "@/lib/supabaseClient";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export function SignUpForm() {
-  const router = useRouter()
-  const [isLoading, setIsLoading] = useState(false)
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirm, setConfirm] = useState("")
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState<string | null>(null)
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError(null)
-    setSuccess(null)
+    e.preventDefault();
+    setError(null);
+    setSuccess(null);
 
     if (password !== confirm) {
-      setError("Passwords do not match.")
-      return
+      setError("Passwords do not match.");
+      return;
     }
 
-    setIsLoading(true)
+    setIsLoading(true);
 
-    const { data, error } = await supabase.auth.signUp({
+    const { data, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
       options: {
         data: { full_name: name },
         emailRedirectTo: `${window.location.origin}/dashboard`,
       },
-    })
+    });
 
-    setIsLoading(false)
+    setIsLoading(false);
 
-    if (error) {
-      setError(error.message)
-      return
+    if (signUpError) {
+      // Handle "email already registered" clearly
+      if (
+        signUpError.message.includes("already registered") ||
+        signUpError.message.includes("duplicate")
+      ) {
+        setError(
+          "This email is already in use. Please log in instead or reset your password."
+        );
+      } else {
+        setError(signUpError.message);
+      }
+      return;
     }
 
     if (data.user && !data.user.confirmed_at) {
-      setSuccess("Check your email to confirm your account.")
+      setSuccess("Check your email to confirm your account.");
     } else {
-      router.push("/dashboard")
+      router.push("/dashboard");
     }
-  }
+  };
 
   // OAuth Provider Sign-up/Login
   const handleOAuth = async (provider: "google" | "github") => {
@@ -61,12 +71,12 @@ export function SignUpForm() {
       options: {
         redirectTo: `${window.location.origin}/dashboard`,
       },
-    })
+    });
 
     if (error) {
-      setError(error.message)
+      setError(error.message);
     }
-  }
+  };
 
   return (
     <motion.form
@@ -144,7 +154,9 @@ export function SignUpForm() {
           <div className="w-full border-t border-border/40" />
         </div>
         <div className="relative flex justify-center text-sm">
-          <span className="bg-background px-2 text-muted-foreground">Or sign up with</span>
+          <span className="bg-background px-2 text-muted-foreground">
+            Or sign up with
+          </span>
         </div>
       </div>
 
@@ -169,14 +181,20 @@ export function SignUpForm() {
 
       <p className="text-xs text-muted-foreground text-center">
         By signing up, you agree to our{" "}
-        <a href="/terms" className="text-primary hover:text-primary/80 transition-colors">
+        <a
+          href="/terms"
+          className="text-primary hover:text-primary/80 transition-colors"
+        >
           Terms of Service
         </a>{" "}
         and{" "}
-        <a href="/privacy" className="text-primary hover:text-primary/80 transition-colors">
+        <a
+          href="/privacy"
+          className="text-primary hover:text-primary/80 transition-colors"
+        >
           Privacy Policy
         </a>
       </p>
     </motion.form>
-  )
+  );
 }
