@@ -1,238 +1,116 @@
+// app/dashboard/page.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import Image from "next/image";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Sidebar } from "@/components/dashboard/Sidebar";
+import { AnalyticsCard } from "@/components/dashboard/AnalyticsCard";
 import { SubscriptionCard } from "@/components/dashboard/SubscriptionCard";
 import { ProductCard } from "@/components/dashboard/ProductCard";
-import { AnalyticsCard } from "@/components/dashboard/AnalyticsCard";
-import { motion } from "framer-motion";
-
-interface UserProfile {
-  id: string;
-  display_name: string;
-  email: string;
-  avatar_url?: string;
-}
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  type: "free" | "paid";
-  price?: number;
-  slug: string;
-}
-
-interface Subscription {
-  id: string;
-  product: Product;
-  start_date: string;
-  expiry_date: string;
-  status: "active" | "expired" | "pending";
-  domain?: string;
-}
+import { useAuth } from "@/hooks/useAuth";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export default function DashboardPage() {
-  const [user, setUser] = useState<UserProfile | null>(null);
-  const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
-  const [products, setProducts] = useState<Product[]>([]);
+  const { user } = useAuth();
+  const [subscriptions, setSubscriptions] = useState<any[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-
-  // Renewal & profile state
-  const [renewDomain, setRenewDomain] = useState<{ [subId: string]: string }>({});
-  const [renewMessage, setRenewMessage] = useState<{ [subId: string]: string }>({});
-  const [renewLoading, setRenewLoading] = useState<{ [subId: string]: boolean }>({});
-  const [editingName, setEditingName] = useState(false);
-  const [displayName, setDisplayName] = useState("");
-  const [profileMessage, setProfileMessage] = useState("");
+  const [renewDomain, setRenewDomain] = useState("");
 
   useEffect(() => {
-    async function fetchData() {
-      const { data: userData } = await supabase.auth.getUser();
-      if (userData.user) {
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select("*")
-          .eq("id", userData.user.id)
-          .single();
-
-        setUser(profile);
-        setDisplayName(profile?.display_name || "");
-      }
-
-      const { data: subs } = await supabase
-        .from("subscriptions")
-        .select("*, product(*)")
-        .eq("user_id", userData.user?.id);
+    async function fetch() {
+      setLoading(true);
+      if (!user) return;
+      // fetch profile, subscriptions & products
+      const { data: subs } = await supabase.from("subscriptions").select("*, product(*)").eq("user_id", user.id);
+      const { data: prods } = await supabase.from("products").select("*").eq("active", true);
 
       setSubscriptions(subs || []);
-
-      const { data: allProducts } = await supabase
-        .from("products")
-        .select("*")
-        .eq("active", true);
-
-      setProducts(allProducts || []);
+      setProducts(prods || []);
       setLoading(false);
     }
+    fetch();
+  }, [user]);
 
-    fetchData();
-  }, []);
-
-  const handleRenew = async (subscriptionId: string) => {
-    const domain = renewDomain[subscriptionId] || "";
-    setRenewLoading((prev) => ({ ...prev, [subscriptionId]: true }));
-    setRenewMessage((prev) => ({ ...prev, [subscriptionId]: "" }));
-
-    try {
-      const { error } = await supabase
-        .from("subscriptions")
-        .update({ requested_renewal: true, domain })
-        .eq("id", subscriptionId);
-
-      if (error) throw error;
-
-      setRenewMessage((prev) => ({ ...prev, [subscriptionId]: "Renewal request sent!" }));
-    } catch (err: any) {
-      setRenewMessage((prev) => ({ ...prev, [subscriptionId]: err.message || "Error renewing" }));
-    } finally {
-      setRenewLoading((prev) => ({ ...prev, [subscriptionId]: false }));
-    }
+  const handleQuickRenew = async (subId: string) => {
+    // Example: mark requested_renewal; replace with proper billing flow
+    await supabase.from("subscriptions").update({ requested_renewal: true, domain: renewDomain }).eq("id", subId);
+    // refresh
+    const { data: subs } = await supabase.from("subscriptions").select("*, product(*)").eq("user_id", user?.id);
+    setSubscriptions(subs || []);
   };
 
-  const handleNameUpdate = async () => {
-    if (!user) return;
-    setProfileMessage("");
-    try {
-      const { error } = await supabase
-        .from("profiles")
-        .update({ display_name: displayName })
-        .eq("id", user.id);
+  if (loading) return <p>Loading dashboard...</p>;
 
-      if (error) throw error;
-
-      setUser((prev) => prev ? { ...prev, display_name: displayName } : prev);
-      setProfileMessage("Display name updated!");
-      setEditingName(false);
-    } catch (err: any) {
-      setProfileMessage(err.message || "Error updating name");
-    }
-  };
-
-  if (loading) return <p className="text-center mt-20">Loading dashboard...</p>;
-
-  const activeProductIds = subscriptions.map((s) => s.product.id);
-  const availableProducts = products.filter((p) => !activeProductIds.includes(p.id));
+  const activeCount = subscriptions.filter(s => s.status === "active").length;
+  const upcoming = subscriptions.filter(s => s.status === "active" && new Date(s.expiry_date) < new Date(Date.now() + 30*24*60*60*1000)).length;
+  const available = products.filter(p => !subscriptions.some(s => s.product.id === p.id)).length;
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <Sidebar />
+    <div>
+      <header className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="text-3xl font-bold">Welcome back, {user?.user_metadata?.full_name || user?.email}</h1>
+          <p className="text-sm text-muted-foreground">Manage your products, campaigns and subscriptions from here.</p>
+        </div>
 
-      <main className="flex-1 p-6">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">
-              Welcome back, {user?.display_name || "User"}!
-            </h1>
-
-            {/* Edit display name */}
-            {editingName ? (
-              <div className="flex items-center gap-2 mt-2">
-                <Input
-                  value={displayName}
-                  onChange={(e) => setDisplayName(e.target.value)}
-                  className="bg-card border-border/40 text-foreground placeholder:text-muted-foreground"
-                />
-                <Button size="sm" onClick={handleNameUpdate}>
-                  Save
-                </Button>
-                <Button size="sm" variant="ghost" onClick={() => setEditingName(false)}>
-                  Cancel
-                </Button>
-              </div>
+        <div className="flex items-center gap-4">
+          {/* placeholder for user avatar */}
+          <div className="w-12 h-12 rounded-full bg-muted/10 flex items-center justify-center">
+            {user?.user_metadata?.avatar_url ? (
+              <Image src={user.user_metadata.avatar_url} alt="avatar" width={48} height={48} className="rounded-full" />
             ) : (
-              <Button size="sm" variant="outline" onClick={() => setEditingName(true)}>
-                Edit Display Name
-              </Button>
+              <span>{(user?.email || "U").charAt(0).toUpperCase()}</span>
             )}
-            {profileMessage && <p className="text-sm text-primary mt-1">{profileMessage}</p>}
           </div>
+        </div>
+      </header>
 
-          {user?.avatar_url && (
-            <Image
-              src={user.avatar_url}
-              alt="Profile picture"
-              width={48}
-              height={48}
-              className="rounded-full border border-border"
-            />
-          )}
+      {/* analytics */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <AnalyticsCard title="Active Subscriptions" value={activeCount} />
+        <AnalyticsCard title="Available Products" value={available} />
+        <AnalyticsCard title="Upcoming Expirations (30d)" value={upcoming} />
+      </div>
+
+      {/* Subscriptions section */}
+      <section className="mb-8">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-semibold">Your Subscriptions</h2>
+          <div className="flex gap-2 items-center">
+            <Input placeholder="domain (optional)" value={renewDomain} onChange={(e) => setRenewDomain((e.target as HTMLInputElement).value)} />
+          </div>
         </div>
 
-        {/* Analytics */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-          <AnalyticsCard title="Active Subscriptions" value={subscriptions.filter(s => s.status === "active").length} />
-          <AnalyticsCard title="Products Available" value={availableProducts.length} />
-          <AnalyticsCard title="Upcoming Expirations" value={subscriptions.filter(s => s.status === "active" && new Date(s.expiry_date) < new Date(Date.now() + 30*24*60*60*1000)).length} />
+        {subscriptions.length === 0 ? (
+          <p className="text-muted-foreground">No active subscriptions. Explore products below.</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {subscriptions.map((s) => (
+              <div key={s.id} className="space-y-2">
+                <SubscriptionCard subscription={s} />
+                {s.product.type === "paid" && s.status === "active" && (
+                  <Button onClick={() => handleQuickRenew(s.id)}>Request Renewal</Button>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* Products */}
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-semibold">Available Products</h2>
         </div>
 
-        {/* Subscriptions */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-foreground mb-4">Your Subscriptions</h2>
-          {subscriptions.length === 0 ? (
-            <p className="text-muted-foreground">You haven’t subscribed to any paid products yet.</p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {subscriptions.map((s) => (
-                <motion.div key={s.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
-                  <SubscriptionCard subscription={s} />
-
-                  {s.status === "active" && s.product.type === "paid" && (
-                    <div className="mt-2 space-y-2">
-                      <Input
-                        placeholder="Domain (if applicable)"
-                        value={renewDomain[s.id] || s.domain || ""}
-                        onChange={(e) =>
-                          setRenewDomain((prev) => ({ ...prev, [s.id]: e.target.value }))
-                        }
-                      />
-                      <Button
-                        onClick={() => handleRenew(s.id)}
-                        disabled={renewLoading[s.id]}
-                        className="w-full"
-                      >
-                        {renewLoading[s.id] ? "Sending..." : "Request Renewal"}
-                      </Button>
-                      {renewMessage[s.id] && (
-                        <p className="text-sm text-muted-foreground">{renewMessage[s.id]}</p>
-                      )}
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          )}
-        </section>
-
-        {/* Available Products */}
-        <section>
-          <h2 className="text-2xl font-semibold text-foreground mb-4">Available Products</h2>
-          {availableProducts.length === 0 ? (
-            <p className="text-muted-foreground">No new products available yet.</p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {availableProducts.map((p) => (
-                <ProductCard key={p.id} product={p} />
-              ))}
-            </div>
-          )}
-        </section>
-      </main>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {products.map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
