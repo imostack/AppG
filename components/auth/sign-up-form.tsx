@@ -20,49 +20,60 @@ export function SignUpForm() {
   const [success, setSuccess] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setSuccess(null);
+  e.preventDefault();
+  setError(null);
+  setSuccess(null);
 
-    if (password !== confirm) {
-      setError("Passwords do not match.");
-      return;
-    }
+  if (password !== confirm) {
+    setError("Passwords do not match.");
+    return;
+  }
 
-    setIsLoading(true);
+  setIsLoading(true);
 
-    const { data, error: signUpError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { full_name: name },
-        emailRedirectTo: `${window.location.origin}/dashboard`,
-      },
-    });
+  // Check if the email already exists
+  const { data: existingUser, error: checkError } = await supabase
+    .from("auth.users")
+    .select("email")
+    .eq("email", email)
+    .maybeSingle();
 
+  if (checkError) {
+    console.error(checkError);
+    setError("Something went wrong. Please try again.");
     setIsLoading(false);
+    return;
+  }
 
-    if (signUpError) {
-      // Handle "email already registered" clearly
-      if (
-        signUpError.message.includes("already registered") ||
-        signUpError.message.includes("duplicate")
-      ) {
-        setError(
-          "This email is already in use. Please log in instead or reset your password."
-        );
-      } else {
-        setError(signUpError.message);
-      }
-      return;
-    }
+  if (existingUser) {
+    setError("This email is already registered. Please sign in instead.");
+    setIsLoading(false);
+    return;
+  }
 
-    if (data.user && !data.user.confirmed_at) {
-      setSuccess("Check your email to confirm your account.");
-    } else {
-      router.push("/dashboard");
-    }
-  };
+  // Proceed to signup
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { full_name: name },
+      emailRedirectTo: `${window.location.origin}/dashboard`,
+    },
+  });
+
+  setIsLoading(false);
+
+  if (error) {
+    setError(error.message);
+    return;
+  }
+
+  if (data.user && !data.user.confirmed_at) {
+    setSuccess("Check your email to confirm your account.");
+  } else {
+    router.push("/dashboard");
+  }
+};
 
   // OAuth Provider Sign-up/Login
   const handleOAuth = async (provider: "google" | "github") => {
