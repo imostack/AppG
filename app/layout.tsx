@@ -1,14 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Geist_Mono } from "next/font/google"
+import { Inter } from 'next/font/google'
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import Script from "next/script"
 import CookieConsent from "@/components/CookieConsent"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
-const geistMono = Geist_Mono({ subsets: ["latin"] })
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://appguts.com"),

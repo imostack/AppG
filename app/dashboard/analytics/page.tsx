@@ -1,26 +1,56 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, LineChart, Line } from "recharts";
-import { useState } from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
+  LineChart,
+  Line,
+} from "recharts";
+
+interface Metric {
+  day: string;
+  impressions: number;
+  clicks: number;
+  ctr?: number;
+}
 
 const AnalyticsPage = () => {
-  // Sample analytics data (replace with API data from Supabase later)
-  const [data] = useState([
-    { name: "Mon", impressions: 4000, clicks: 2400 },
-    { name: "Tue", impressions: 3000, clicks: 1398 },
-    { name: "Wed", impressions: 2000, clicks: 9800 },
-    { name: "Thu", impressions: 2780, clicks: 3908 },
-    { name: "Fri", impressions: 1890, clicks: 4800 },
-    { name: "Sat", impressions: 2390, clicks: 3800 },
-    { name: "Sun", impressions: 3490, clicks: 4300 },
-  ]);
+  const [data, setData] = useState<Metric[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchMetrics = async () => {
+      setLoading(true);
+      const { data: metrics, error } = await supabase
+        .from("campaign_metrics")
+        .select("day, impressions, clicks, ctr")
+        .order("day", { ascending: true });
+
+      if (error) {
+        console.error("Error fetching metrics:", error.message);
+      } else {
+        setData(metrics || []);
+      }
+
+      setLoading(false);
+    };
+
+    fetchMetrics();
+  }, [supabase]);
 
   return (
     <div className="p-6 space-y-6">
       <h1 className="text-2xl font-bold tracking-tight">Analytics Overview</h1>
       <p className="text-muted-foreground">
-        Gain insights into your campaigns’ performance across platforms. Track impressions, clicks, and engagement trends.
+        Track your campaign performance — impressions, clicks, and engagement trends.
       </p>
 
       {/* Summary Cards */}
@@ -30,8 +60,16 @@ const AnalyticsPage = () => {
             <CardTitle>Total Impressions</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-semibold">24.3K</p>
-            <p className="text-sm text-muted-foreground">↑ 12% from last week</p>
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <>
+                <p className="text-3xl font-semibold">
+                  {data.reduce((sum, d) => sum + (d.impressions || 0), 0).toLocaleString()}
+                </p>
+                <p className="text-sm text-muted-foreground">Total across all days</p>
+              </>
+            )}
           </CardContent>
         </Card>
 
@@ -40,18 +78,37 @@ const AnalyticsPage = () => {
             <CardTitle>Total Clicks</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-semibold">8.9K</p>
-            <p className="text-sm text-muted-foreground">↑ 5% from last week</p>
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <>
+                <p className="text-3xl font-semibold">
+                  {data.reduce((sum, d) => sum + (d.clicks || 0), 0).toLocaleString()}
+                </p>
+                <p className="text-sm text-muted-foreground">Total user interactions</p>
+              </>
+            )}
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>CTR (Click-through Rate)</CardTitle>
+            <CardTitle>Average CTR</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-semibold">3.2%</p>
-            <p className="text-sm text-muted-foreground">↓ 1% from last week</p>
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <>
+                <p className="text-3xl font-semibold">
+                  {(
+                    data.reduce((sum, d) => sum + (d.ctr || 0), 0) / (data.length || 1)
+                  ).toFixed(2)}
+                  %
+                </p>
+                <p className="text-sm text-muted-foreground">Click-through rate</p>
+              </>
+            )}
           </CardContent>
         </Card>
       </div>
@@ -64,15 +121,19 @@ const AnalyticsPage = () => {
             <CardTitle>Weekly Impressions</CardTitle>
           </CardHeader>
           <CardContent className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="impressions" fill="#3b82f6" />
-              </BarChart>
-            </ResponsiveContainer>
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={data}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="day" />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="impressions" fill="#3b82f6" />
+                </BarChart>
+              </ResponsiveContainer>
+            )}
           </CardContent>
         </Card>
 
@@ -82,15 +143,24 @@ const AnalyticsPage = () => {
             <CardTitle>Click Trends</CardTitle>
           </CardHeader>
           <CardContent className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={data}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Line type="monotone" dataKey="clicks" stroke="#22c55e" strokeWidth={2} />
-              </LineChart>
-            </ResponsiveContainer>
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={data}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="day" />
+                  <YAxis />
+                  <Tooltip />
+                  <Line
+                    type="monotone"
+                    dataKey="clicks"
+                    stroke="#22c55e"
+                    strokeWidth={2}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            )}
           </CardContent>
         </Card>
       </div>
