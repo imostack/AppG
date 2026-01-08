@@ -28,6 +28,21 @@ export const metadata: Metadata = {
     "business automation",
   ],
   authors: [{ name: "App Guts Limited", url: "https://appguts.com" }],
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "App Guts",
+  },
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
     title: "App Guts Limited - Enterprise SaaS Platform",
     description:

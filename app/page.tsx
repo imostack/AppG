@@ -4,6 +4,7 @@ import { Features } from "@/components/features"
 import { WhyAppGuts } from "@/components/why-app-guts"
 import { AboutSection } from "@/components/about-section"
 import { ContactSection } from "@/components/contact-section"
+import { WaitlistBanner } from "@/components/waitlist-banner"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <WhyAppGuts />
       <AboutSection />
       <ContactSection />
+      <WaitlistBanner />
       <Footer />
     </main>
   )

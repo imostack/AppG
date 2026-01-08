@@ -1,87 +1,27 @@
 "use client"
 
-import Image from "next/image"
-import { useTheme } from "@/components/theme-provider"
-
 export function Footer() {
-  const { theme } = useTheme()
-
   return (
-    <footer className="border-t border-border/40 bg-card/50 px-4 py-12 sm:px-6 lg:px-8">
-  <div className="mx-auto max-w-6xl">
-    <div className="grid gap-8 md:grid-cols-4">
-      {/* --- Logo + Description --- */}
-      <div>
-        <div className="mb-4 flex items-center gap-2">
-          <div className="relative flex items-center">
-            {/* Light logo */}
-            <Image
-              src="/logo-light.png"
-              alt="App Guts Light Logo"
-              width={140}
-              height={140}
-              className={`h-8 w-auto sm:h-10 transition-opacity duration-300 ${
-                theme === "dark" ? "opacity-0 absolute" : "opacity-100"
-              }`}
-            />
-
-            {/* Dark logo */}
-            <Image
-              src="/logo-dark.png"
-              alt="App Guts Dark Logo"
-              width={140}
-              height={140}
-              className={`h-8 w-auto sm:h-10 transition-opacity duration-300 ${
-                theme === "dark" ? "opacity-100" : "opacity-0 absolute"
-              }`}
-            />
-          </div>
-        </div>
-
-        <p className="text-sm text-muted-foreground mb-4">
-          Building digital products that power everyday life.
-        </p>
-
-        {/* --- Contact Emails --- */}
-        <div className="space-y-1">
-          <p className="text-sm text-muted-foreground">
-            <span className="font-medium text-foreground">General Inquiries:</span>{" "}
-            <a
-              href="mailto:hello@appguts.com"
-              className="text-primary hover:underline"
-            >
-              hello@appguts.com
-            </a>
-          </p>
-          <p className="text-sm text-muted-foreground">
-            <span className="font-medium text-foreground">Support:</span>{" "}
-            <a
-              href="mailto:support@appguts.com"
-              className="text-primary hover:underline"
-            >
-              support@appguts.com
-            </a>
-          </p>
-        </div>
-      </div>
-
+    <footer className="border-t border-border/40 px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* --- Products --- */}
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Products</h4>
+            <h4 className="mb-4 text-sm font-semibold text-foreground">Products</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="/#products" className="hover:text-foreground transition-colors">
-                  AccessRA
-                </a>
-              </li>
-              <li>
-                <a href="/#products" className="hover:text-foreground transition-colors">
+                <a href="https://eventskona.com/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   Events Kona
                 </a>
               </li>
               <li>
-                <a href="/#products" className="hover:text-foreground transition-colors">
-                  Custom Apps
+                <a href="/accessra-partnership" className="hover:text-foreground transition-colors">
+                  AccessRA Partnership
+                </a>
+              </li>
+              <li>
+                <a href="/custom-solutions" className="hover:text-foreground transition-colors">
+                  Custom Solutions
                 </a>
               </li>
             </ul>
@@ -89,7 +29,7 @@ export function Footer() {
 
           {/* --- Company --- */}
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Company</h4>
+            <h4 className="mb-4 text-sm font-semibold text-foreground">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <a href="/#about" className="hover:text-foreground transition-colors">
@@ -97,18 +37,35 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <a href="/careers" className="hover:text-foreground transition-colors">
                   Careers
                 </a>
               </li>
               <li>
-                <a href="/pricing" className="hover:text-foreground transition-colors">
-                  Pricing
+                <a href="/news" className="hover:text-foreground transition-colors">
+                  News
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* --- Resources --- */}
+          <div>
+            <h4 className="mb-4 text-sm font-semibold text-foreground">Resources</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>
+                <a href="https://eventskona.com/sign-in" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                  Events Kona Login
+                </a>
+              </li>
+              <li>
+                <a href="/accessra-partnership" className="hover:text-foreground transition-colors">
+                  AccessRA Partnership
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@appguts.com" className="hover:text-foreground transition-colors">
+                  Contact Us
                 </a>
               </li>
             </ul>
@@ -116,7 +73,7 @@ export function Footer() {
 
           {/* --- Legal --- */}
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Legal</h4>
+            <h4 className="mb-4 text-sm font-semibold text-foreground">Legal</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <a href="/privacy" className="hover:text-foreground transition-colors">
@@ -128,20 +85,15 @@ export function Footer() {
                   Terms
                 </a>
               </li>
-              <li>
-                <a href="/#contact" className="hover:text-foreground transition-colors">
-                  Contact
-                </a>
-              </li>
             </ul>
           </div>
         </div>
 
         {/* --- Bottom Bar --- */}
-        <div className="mt-8 border-t border-border/40 pt-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-            <p>&copy; 2025 App Guts Limited. All rights reserved.</p>
-          </div>
+        <div className="mt-12 pt-8 border-t border-border/40">
+          <p className="text-sm text-muted-foreground">
+            &copy; {new Date().getFullYear()} App Guts Limited. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
