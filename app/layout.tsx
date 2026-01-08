@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from 'next/font/google'
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -8,6 +8,14 @@ import CookieConsent from "@/components/CookieConsent"
 import "./globals.css"
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: "cover",
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://appguts.com"),
@@ -28,13 +36,6 @@ export const metadata: Metadata = {
     "business automation",
   ],
   authors: [{ name: "App Guts Limited", url: "https://appguts.com" }],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-    viewportFit: "cover",
-  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
