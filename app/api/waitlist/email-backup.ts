@@ -15,7 +15,7 @@ export async function sendWaitlistEmail(data: {
   try {
     await resend.emails.send({
       from: 'AccessRA Waitlist <noreply@appguts.com>',
-      to: ['hello@appguts.com'], // Your email
+      to: ['hello@appguts.com'], 
       subject: '🎉 New AccessRA Waitlist Signup',
       html: `
         <h2>New Waitlist Signup</h2>

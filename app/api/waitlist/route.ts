@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 
+// Uncomment the line below if you want to send email notifications
+// import { sendWaitlistEmail } from './email-backup'
+
 // TODO: After creating your Zoho Web-to-Lead form, update these values:
 // 1. Go to Zoho CRM → Setup → Channels → Webforms → Create Webform
 // 2. Copy the values from the generated HTML form code
@@ -47,6 +50,9 @@ export async function POST(request: NextRequest) {
       // Don't throw - we'll still return success to user
       // Log for debugging but don't block the user experience
     }
+
+    // Uncomment if you want to send email notifications:
+    // await sendWaitlistEmail({ email, name, businessName, timestamp })
 
     // Always log submissions as backup
     console.log("Waitlist submission:", { email, name, businessName, timestamp })
