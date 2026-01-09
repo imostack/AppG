@@ -18,7 +18,7 @@ const products = [
   {
     title: "AccessRA eCommerce",
     description:
-      "White-label rare goods marketplace platform built in partnership with AccessRA. Launching soon for businesses in the collectibles and rare items space.",
+      "White-label eCommerce platform built in partnership with AccessRA. Launching soon for SMEs in Africa.",
     icon: RocketLaunchIcon,
     gradient: "from-blue-500 to-cyan-500",
     link: "https://accessra.com/",

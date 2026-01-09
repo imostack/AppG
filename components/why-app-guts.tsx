@@ -13,7 +13,7 @@ const capabilities = [
   },
   {
     title: "eCommerce Solutions",
-    description: "White-label marketplace platforms for specialized retail, starting with rare goods and collectibles.",
+    description: "White-label eCommerce platform for specialized retail, starting with SMEs in Africa.",
     icon: CubeIcon,
     gradient: "from-blue-500 to-cyan-600",
     stats: "Enterprise ready",
