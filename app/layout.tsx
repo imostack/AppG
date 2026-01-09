@@ -83,7 +83,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
+        {/* <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
@@ -98,7 +98,7 @@ export default function RootLayout({
               })();
             `,
           }}
-        />
+        /> */}
       </head>
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider>
