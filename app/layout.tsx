@@ -92,7 +92,7 @@ export default function RootLayout({
         <Analytics />
 
         {/* ✅ Tawk.to script - lazyOnload prevents React 19 crash */}
-        <Script
+        {/* <Script
           id="tawk-to"
           strategy="lazyOnload"
           dangerouslySetInnerHTML={{
@@ -108,7 +108,7 @@ export default function RootLayout({
               })();
             `
           }}
-        />
+        /> */}
       </body>
     </html>
   )
