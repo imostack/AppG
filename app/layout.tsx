@@ -91,23 +91,24 @@ export default function RootLayout({
 
         <Analytics />
 
-        {/* ✅ Safe version of Tawk.to script */}
-        <Script id="tawk-to" strategy="afterInteractive">
-          {`
-            if (typeof window !== 'undefined' && !window.Tawk_API) {
-              var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-              (function() {
-                var s1 = document.createElement("script"),
-                    s0 = document.getElementsByTagName("script")[0];
-                s1.async = true;
-                s1.src = 'https://embed.tawk.to/69021e3cb22c021953b669ac/1j8o4c7mn';
-                s1.charset = 'UTF-8';
-                s1.setAttribute('crossorigin', '*');
-                s0.parentNode.insertBefore(s1, s0);
+        {/* ✅ Tawk.to script - lazyOnload prevents React 19 crash */}
+        <Script
+          id="tawk-to"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+              (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/69021e3cb22c021953b669ac/1j8o4c7mn';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
               })();
-            }
-          `}
-        </Script>
+            `
+          }}
+        />
       </body>
     </html>
   )

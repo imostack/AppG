@@ -4,8 +4,10 @@ import { useEffect, useState } from "react"
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const consent = localStorage.getItem("cookie-consent")
     if (!consent) {
       const timer = setTimeout(() => setVisible(true), 1000)
@@ -25,7 +27,8 @@ export default function CookieConsent() {
     // 🚫 Do not load analytics or tracking scripts
   }
 
-  if (!visible) return null
+  // Prevent hydration mismatch
+  if (!mounted || !visible) return null
 
   return (
     <div

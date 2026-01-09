@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
-import Link from "next/link"
 
 export function Hero() {
   const scrollToSection = (id: string) => {
@@ -91,13 +90,11 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
               <Button
                 size="lg"
-                asChild
+                onClick={() => scrollToSection("contact")}
                 className="bg-foreground text-background hover:bg-foreground/90 px-8 h-12 text-base font-medium"
               >
-                <Link href="/sign-up">
-                  Get Started
-                  <ArrowRightIcon className="ml-2 h-4 w-4" />
-                </Link>
+                Get Started
+                <ArrowRightIcon className="ml-2 h-4 w-4" />
               </Button>
               <Button
                 size="lg"
