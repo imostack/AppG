@@ -21,7 +21,7 @@ const products = [
       "White-label eCommerce platform built in partnership with AccessRA. Launching soon for SMEs in Africa.",
     icon: RocketLaunchIcon,
     gradient: "from-blue-500 to-cyan-500",
-    link: "https://accessra.com/",
+    link: "https://appguts.com/accessra-partnership",
     linkText: "Learn More",
     badge: "Coming Soon",
   },
