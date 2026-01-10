@@ -32,7 +32,7 @@ export function AboutSection() {
                   <div className="text-sm text-muted-foreground">Active Products</div>
                 </div>
                 <div>
-                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">5K+</div>
+                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">50+</div>
                   <div className="text-sm text-muted-foreground">Users Reached</div>
                 </div>
                 <div>

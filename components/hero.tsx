@@ -107,14 +107,14 @@ export function Hero() {
             </div>
 
             {/* Company Logos/Badges - Minimal */}
-            <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 text-sm text-muted-foreground">
+            {/* <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 text-sm text-muted-foreground">
               <span className="font-medium">Events Kona</span>
               <span className="text-border">•</span>
               <span className="font-medium">AccessRA Partnership</span>
               <span className="text-border">•</span>
               <span className="font-medium">Enterprise SaaS</span>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Animated Tech Illustration */}
           <motion.div

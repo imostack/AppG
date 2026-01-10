@@ -134,11 +134,11 @@ export function Features() {
                                 <div className="text-xs sm:text-sm text-muted-foreground">Active Events</div>
                               </div>
                               <div className="bg-background/80 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-border/40 text-center">
-                                <div className="text-3xl sm:text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">5K+</div>
+                                <div className="text-3xl sm:text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">80</div>
                                 <div className="text-xs sm:text-sm text-muted-foreground">Attendees</div>
                               </div>
                               <div className="bg-background/80 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-border/40 text-center">
-                                <div className="text-3xl sm:text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">1.2K+</div>
+                                <div className="text-3xl sm:text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">50</div>
                                 <div className="text-xs sm:text-sm text-muted-foreground">Organizers</div>
                               </div>
                             </div>
