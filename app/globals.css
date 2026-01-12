@@ -220,4 +220,18 @@
   .safe-right {
     padding-right: env(safe-area-inset-right);
   }
+
+  /* Slow spin animation for Safari compatibility */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 50s linear infinite;
+  }
 }

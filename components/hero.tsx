@@ -124,16 +124,12 @@ export function Hero() {
             className="relative hidden lg:block"
           >
             <div className="relative aspect-square max-w-lg mx-auto">
-              {/* Central Hub */}
-              <motion.div
-                className="absolute inset-0 flex items-center justify-center"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-              >
-                <div className="w-32 h-32 rounded-3xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-2xl shadow-indigo-500/20" />
-              </motion.div>
+              {/* Central Hub - Simplified for Safari */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-32 h-32 rounded-3xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-2xl shadow-indigo-500/20 animate-spin-slow" />
+              </div>
 
-              {/* Orbiting Nodes */}
+              {/* Orbiting Nodes - Simplified for Safari */}
               {[0, 1, 2, 3, 4, 5].map((i) => {
                 const angle = (i * 60) * (Math.PI / 180)
                 const radius = 140
@@ -141,32 +137,21 @@ export function Hero() {
                 const y = Math.sin(angle) * radius
 
                 return (
-                  <motion.div
+                  <div
                     key={i}
                     className="absolute top-1/2 left-1/2"
                     style={{
-                      x: x - 24,
-                      y: y - 24,
-                    }}
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.5, 1, 0.5],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      delay: i * 0.5,
-                      ease: "easeInOut",
+                      transform: `translate(${x - 24}px, ${y - 24}px)`,
                     }}
                   >
                     <div className="w-12 h-12 rounded-xl bg-background border-2 border-indigo-500/40 shadow-lg flex items-center justify-center backdrop-blur-sm">
                       <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-400" />
                     </div>
-                  </motion.div>
+                  </div>
                 )
               })}
 
-              {/* Connecting Lines */}
+              {/* Connecting Lines - Simplified for Safari compatibility */}
               <svg className="absolute inset-0 w-full h-full" style={{ overflow: 'visible' }}>
                 <defs>
                   <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -181,7 +166,7 @@ export function Hero() {
                   const y = Math.sin(angle) * radius + 200
 
                   return (
-                    <motion.line
+                    <line
                       key={i}
                       x1="200"
                       y1="200"
@@ -189,40 +174,20 @@ export function Hero() {
                       y2={y}
                       stroke="url(#lineGradient)"
                       strokeWidth="2"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        delay: i * 0.3,
-                        ease: "easeInOut",
-                      }}
                     />
                   )
                 })}
               </svg>
 
-              {/* Data Particles */}
+              {/* Data Particles - Simplified for Safari */}
               {[...Array(8)].map((_, i) => (
-                <motion.div
+                <div
                   key={`particle-${i}`}
-                  className="absolute w-2 h-2 rounded-full bg-indigo-400"
+                  className="absolute w-2 h-2 rounded-full bg-indigo-400/30"
                   style={{
                     left: '50%',
                     top: '50%',
-                  }}
-                  animate={{
-                    x: [0, Math.cos(i * 45 * Math.PI / 180) * 180],
-                    y: [0, Math.sin(i * 45 * Math.PI / 180) * 180],
-                    opacity: [1, 0],
-                    scale: [1, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: i * 0.25,
-                    ease: "easeOut",
+                    transform: `translate(${Math.cos(i * 45 * Math.PI / 180) * 120}px, ${Math.sin(i * 45 * Math.PI / 180) * 120}px)`,
                   }}
                 />
               ))}
