@@ -113,8 +113,8 @@ export function Hero() {
               <span className="font-medium">AccessRA Partnership</span>
               <span className="text-border">•</span>
               <span className="font-medium">Enterprise SaaS</span>
-            </div>
-          </motion.div> */}
+            </div> */}
+          </motion.div>
 
           {/* Animated Tech Illustration */}
           <motion.div
