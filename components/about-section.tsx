@@ -18,7 +18,7 @@ export function AboutSection() {
                   App Guts is a product company building platforms for African communities and businesses.
                 </p>
                 <p>
-                  We operate Events Kona, an event discovery platform connecting communities across multiple countries, and are partnering with AccessRA to launch a white-label eCommerce marketplace for specialized retail.
+                  We operate Events Kona, an event discovery platform connecting communities across multiple countries, and are partnering with AccessRA to launch a white-label eCommerce platform that enables businesses to set up their own branded marketplace in minutes.
                 </p>
                 <p>
                   Our mission is to create accessible, scalable platforms that solve real problems for people and businesses across Africa.
