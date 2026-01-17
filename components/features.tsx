@@ -23,17 +23,17 @@ const products = [
   {
     title: "AccessRA Platform",
     description:
-      "Launch your own branded eCommerce marketplace in 3 minutes. Complete white-label solution with inventory management, multi-vendor support, and enterprise features for SMEs across Africa.",
+      "Launch your own branded eCommerce store in 3 minutes or less. Complete white-label solution where merchants can sell products, accept payments, track shipments, and customize their store on their own domain.",
     icon: RocketLaunchIcon,
     gradient: "from-blue-500 to-cyan-500",
     link: "https://appguts.com/accessra-partnership",
     linkText: "Learn about AccessRA",
     badge: "Coming Soon",
     features: [
-      "3-minute setup & deployment",
-      "Full white-label customization",
-      "Built-in inventory management",
-      "Multi-vendor marketplace ready"
+      "Store setup in 3 minutes",
+      "White-label with custom domain",
+      "Payment & shipment tracking",
+      "Full inventory management"
     ]
   },
 ]

@@ -32,10 +32,10 @@ export function Header() {
               <Image
                 src="/logo-light.png"
                 alt="App Guts Light Logo"
-                width={140}
-                height={140}
+                width={180}
+                height={180}
                 priority
-                className={`h-10 w-auto sm:h-12 md:h-14 transition-all duration-300 group-hover:scale-105 ${
+                className={`h-14 w-auto sm:h-16 md:h-20 transition-all duration-300 group-hover:scale-105 ${
                   theme === "dark" ? "opacity-0 absolute" : "opacity-100"
                 }`}
               />
@@ -44,10 +44,10 @@ export function Header() {
               <Image
                 src="/logo-dark.png"
                 alt="App Guts Dark Logo"
-                width={140}
-                height={140}
+                width={180}
+                height={180}
                 priority
-                className={`h-10 w-auto sm:h-12 md:h-14 transition-all duration-300 group-hover:scale-105 ${
+                className={`h-14 w-auto sm:h-16 md:h-20 transition-all duration-300 group-hover:scale-105 ${
                   theme === "dark" ? "opacity-100" : "opacity-0 absolute"
                 }`}
               />
