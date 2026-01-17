@@ -26,7 +26,7 @@ export function Hero() {
   }
 
   return (
-    <section id="home" className="relative overflow-hidden px-4 py-32 sm:py-40 lg:py-48 sm:px-6 lg:px-8">
+    <section id="home" className="relative overflow-hidden px-4 py-20 sm:py-24 lg:py-28 sm:px-6 lg:px-8">
       {/* Animated Tech Background */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         {/* Gradient orbs */}

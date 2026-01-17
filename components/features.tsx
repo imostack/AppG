@@ -40,7 +40,7 @@ const products = [
 
 export function Features() {
   return (
-    <section id="products" className="relative border-t border-border/40 px-4 py-32 sm:py-40 sm:px-6 lg:px-8">
+    <section id="products" className="relative border-t border-border/40 px-4 py-20 sm:py-24 lg:py-28 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
           <div className="mb-20 max-w-3xl">
