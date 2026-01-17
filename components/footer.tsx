@@ -54,7 +54,7 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold text-foreground">Resources</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="https://eventskona.com/sign-in" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                <a href="https://eventskona.com/login" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   Events Kona Login
                 </a>
               </li>
