@@ -4,6 +4,21 @@ import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 
+// Pre-calculate positions to avoid hydration mismatch
+const nodePositions = [0, 1, 2, 3, 4, 5].map((i) => {
+  const angle = (i * 60) * (Math.PI / 180)
+  const radius = 140
+  return {
+    x: Math.cos(angle) * radius,
+    y: Math.sin(angle) * radius,
+  }
+})
+
+const particlePositions = [...Array(8)].map((_, i) => ({
+  x: Math.cos(i * 45 * Math.PI / 180) * 120,
+  y: Math.sin(i * 45 * Math.PI / 180) * 120,
+}))
+
 export function Hero() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -74,46 +89,50 @@ export function Hero() {
             transition={{ duration: 0.6 }}
             className="text-center lg:text-left"
           >
-            {/* Main Headline - Anthropic Style */}
+            {/* Main Headline - Clear Product Company Positioning */}
             <h1 className="mb-8 text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-              Digital products
+              Platforms that
               <br />
-              <span className="text-muted-foreground">for modern business</span>
+              <span className="text-muted-foreground">connect communities</span>
             </h1>
 
-            {/* Subtitle */}
+            {/* Subtitle - Clear value prop */}
             <p className="mb-12 text-lg sm:text-xl text-muted-foreground lg:max-w-lg font-light leading-relaxed">
-              Building scalable platforms that connect people to experiences and businesses to growth.
+              We build event discovery and commerce platforms for businesses and communities across Africa.
             </p>
 
-            {/* CTA Buttons - Cleaner Style */}
+            {/* CTA Buttons - Product focused */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
               <Button
                 size="lg"
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection("products")}
                 className="bg-foreground text-background hover:bg-foreground/90 px-8 h-12 text-base font-medium"
               >
-                Get Started
+                Explore our products
                 <ArrowRightIcon className="ml-2 h-4 w-4" />
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => scrollToSection("products")}
+                onClick={() => scrollToSection("about")}
                 className="px-8 h-12 text-base font-medium"
               >
-                View Products
+                About App Guts
               </Button>
             </div>
 
-            {/* Company Logos/Badges - Minimal */}
-            {/* <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 text-sm text-muted-foreground">
-              <span className="font-medium">Events Kona</span>
+            {/* Product badges */}
+            <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-indigo-500" />
+                <span className="font-medium">Events Kona</span>
+              </div>
               <span className="text-border">•</span>
-              <span className="font-medium">AccessRA Partnership</span>
-              <span className="text-border">•</span>
-              <span className="font-medium">Enterprise SaaS</span>
-            </div> */}
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500" />
+                <span className="font-medium">AccessRA Platform</span>
+              </div>
+            </div>
           </motion.div>
 
           {/* Animated Tech Illustration */}
@@ -130,26 +149,19 @@ export function Hero() {
               </div>
 
               {/* Orbiting Nodes - Simplified for Safari */}
-              {[0, 1, 2, 3, 4, 5].map((i) => {
-                const angle = (i * 60) * (Math.PI / 180)
-                const radius = 140
-                const x = Math.cos(angle) * radius
-                const y = Math.sin(angle) * radius
-
-                return (
-                  <div
-                    key={i}
-                    className="absolute top-1/2 left-1/2"
-                    style={{
-                      transform: `translate(${x - 24}px, ${y - 24}px)`,
-                    }}
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-background border-2 border-indigo-500/40 shadow-lg flex items-center justify-center backdrop-blur-sm">
-                      <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-400" />
-                    </div>
+              {nodePositions.map((pos, i) => (
+                <div
+                  key={i}
+                  className="absolute top-1/2 left-1/2"
+                  style={{
+                    transform: `translate(${pos.x - 24}px, ${pos.y - 24}px)`,
+                  }}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-background border-2 border-indigo-500/40 shadow-lg flex items-center justify-center backdrop-blur-sm">
+                    <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-400" />
                   </div>
-                )
-              })}
+                </div>
+              ))}
 
               {/* Connecting Lines - Simplified for Safari compatibility */}
               <svg className="absolute inset-0 w-full h-full" style={{ overflow: 'visible' }}>
@@ -159,35 +171,28 @@ export function Hero() {
                     <stop offset="100%" stopColor="rgb(168, 85, 247)" stopOpacity="0.2" />
                   </linearGradient>
                 </defs>
-                {[0, 1, 2, 3, 4, 5].map((i) => {
-                  const angle = (i * 60) * (Math.PI / 180)
-                  const radius = 140
-                  const x = Math.cos(angle) * radius + 200
-                  const y = Math.sin(angle) * radius + 200
-
-                  return (
-                    <line
-                      key={i}
-                      x1="200"
-                      y1="200"
-                      x2={x}
-                      y2={y}
-                      stroke="url(#lineGradient)"
-                      strokeWidth="2"
-                    />
-                  )
-                })}
+                {nodePositions.map((pos, i) => (
+                  <line
+                    key={i}
+                    x1="200"
+                    y1="200"
+                    x2={pos.x + 200}
+                    y2={pos.y + 200}
+                    stroke="url(#lineGradient)"
+                    strokeWidth="2"
+                  />
+                ))}
               </svg>
 
               {/* Data Particles - Simplified for Safari */}
-              {[...Array(8)].map((_, i) => (
+              {particlePositions.map((pos, i) => (
                 <div
                   key={`particle-${i}`}
                   className="absolute w-2 h-2 rounded-full bg-indigo-400/30"
                   style={{
                     left: '50%',
                     top: '50%',
-                    transform: `translate(${Math.cos(i * 45 * Math.PI / 180) * 120}px, ${Math.sin(i * 45 * Math.PI / 180) * 120}px)`,
+                    transform: `translate(${pos.x}px, ${pos.y}px)`,
                   }}
                 />
               ))}

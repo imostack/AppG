@@ -35,35 +35,29 @@ export function MobileNav() {
           >
             <div className="space-y-1 px-4 py-4">
               <Link
-                href="/#home"
-                className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-card transition-colors"
-              >
-                Home
-              </Link>
-              <Link
                 href="/#products"
                 className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-card transition-colors"
+                onClick={() => setIsOpen(false)}
               >
                 Products
               </Link>
               <Link
                 href="/#about"
                 className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-card transition-colors"
+                onClick={() => setIsOpen(false)}
               >
                 About
               </Link>
               <Link
                 href="/#contact"
                 className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-card transition-colors"
+                onClick={() => setIsOpen(false)}
               >
                 Contact
               </Link>
-              <div className="border-t border-border/40 pt-4 mt-4 space-y-2">
-                <Button variant="ghost" className="w-full justify-start" asChild>
-                  <Link href="/sign-in">Sign In</Link>
-                </Button>
+              <div className="border-t border-border/40 pt-4 mt-4">
                 <Button className="w-full" asChild>
-                  <Link href="/sign-up">Get Started</Link>
+                  <a href="mailto:hello@appguts.com">Get in Touch</a>
                 </Button>
               </div>
             </div>

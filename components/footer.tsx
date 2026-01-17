@@ -92,7 +92,7 @@ export function Footer() {
         {/* --- Bottom Bar --- */}
         <div className="mt-12 pt-8 border-t border-border/40">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} App Guts Limited. All rights reserved.
+            &copy; 2026 App Guts Limited. All rights reserved.
           </p>
         </div>
       </div>

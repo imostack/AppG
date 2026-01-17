@@ -11,29 +11,29 @@ export function AboutSection() {
           <ScrollReveal>
             <div>
               <h2 className="mb-8 text-5xl sm:text-6xl font-bold tracking-tight text-foreground">
-                Company
+                About App Guts
               </h2>
               <div className="space-y-6 text-lg sm:text-xl text-muted-foreground leading-relaxed">
                 <p>
-                  App Guts Limited builds platforms that connect people and empower businesses.
+                  App Guts is a product company building platforms for African communities and businesses.
                 </p>
                 <p>
-                  We're the parent company of Events Kona and development partner for AccessRA's white-label rare goods marketplace.
+                  We operate Events Kona, an event discovery platform connecting communities across multiple countries, and are partnering with AccessRA to launch a white-label eCommerce marketplace for specialized retail.
                 </p>
                 <p>
-                  Our focus is creating scalable SaaS products that solve real problems for modern businesses and communities.
+                  Our mission is to create accessible, scalable platforms that solve real problems for people and businesses across Africa.
                 </p>
               </div>
 
               {/* Stats */}
               <div className="mt-12 grid grid-cols-3 gap-8">
                 <div>
-                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">2+</div>
-                  <div className="text-sm text-muted-foreground">Active Products</div>
+                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">2</div>
+                  <div className="text-sm text-muted-foreground">Live Products</div>
                 </div>
                 <div>
-                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">50+</div>
-                  <div className="text-sm text-muted-foreground">Users Reached</div>
+                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">80+</div>
+                  <div className="text-sm text-muted-foreground">Active Users</div>
                 </div>
                 <div>
                   <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">3+</div>

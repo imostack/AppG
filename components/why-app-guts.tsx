@@ -5,25 +5,25 @@ import { RocketIcon, LightningBoltIcon, CubeIcon } from "@radix-ui/react-icons"
 
 const capabilities = [
   {
-    title: "Event Platforms",
-    description: "Full-featured event discovery and management systems that bring communities together.",
+    title: "Community-First Design",
+    description: "Our platforms are built to connect people, from event discovery to commerce experiences that bring communities together.",
     icon: RocketIcon,
     gradient: "from-indigo-500 to-purple-600",
-    stats: "5K+ users",
+    stats: "User-focused",
   },
   {
-    title: "eCommerce Solutions",
-    description: "White-label eCommerce platform for specialized retail, starting with SMEs in Africa.",
+    title: "Africa-Ready Infrastructure",
+    description: "Built specifically for African markets with multi-region support, local payment integration, and mobile-first experiences.",
     icon: CubeIcon,
     gradient: "from-blue-500 to-cyan-600",
-    stats: "Enterprise ready",
+    stats: "Multi-region",
   },
   {
-    title: "Custom Platforms",
-    description: "Purpose-built SaaS products designed and developed specifically for your business model.",
+    title: "Enterprise Scale",
+    description: "Our platforms are designed to grow from hundreds to millions of users with robust infrastructure and reliable performance.",
     icon: LightningBoltIcon,
     gradient: "from-purple-500 to-pink-600",
-    stats: "Tailored solutions",
+    stats: "Production-ready",
   },
 ]
 
@@ -34,10 +34,10 @@ export function WhyAppGuts() {
         <ScrollReveal>
           <div className="mb-20 max-w-3xl">
             <h2 className="mb-6 text-5xl sm:text-6xl font-bold tracking-tight text-foreground">
-              Built for scale
+              Why App Guts
             </h2>
             <p className="text-xl sm:text-2xl text-muted-foreground font-light leading-relaxed">
-              From event platforms to enterprise tools, our products are designed to grow with your business.
+              We build platforms designed for African markets that scale from day one.
             </p>
           </div>
         </ScrollReveal>

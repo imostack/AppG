@@ -5,25 +5,18 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { useTheme } from "@/components/theme-provider"
 
 export function Header() {
   const { theme } = useTheme()
-  const { scrollY } = useScroll()
-  const headerOpacity = useTransform(scrollY, [0, 100], [0.8, 0.95])
 
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      style={{
-        backgroundColor: theme === "dark"
-          ? `rgba(13, 17, 23, ${headerOpacity})`
-          : `rgba(255, 255, 255, ${headerOpacity})`
-      }}
-      className="sticky top-0 z-50 border-b border-border/40 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60"
+      className="sticky top-0 z-50 border-b border-border/40 backdrop-blur-xl bg-background/80"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 sm:h-18 items-center justify-between">
@@ -66,7 +59,7 @@ export function Header() {
             {[
               { label: "Products", href: "/#products" },
               { label: "About", href: "/#about" },
-              { label: "Custom Solutions", href: "/custom-solutions" },
+              { label: "Contact", href: "/#contact" },
             ].map((item, index) => (
               <motion.div
                 key={item.label}
