@@ -32,6 +32,11 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold text-foreground">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
+                <a href="https://dashboard.appguts.com/login" className="hover:text-foreground transition-colors">
+                  Client Login
+                </a>
+              </li>
+              <li>
                 <a href="/#about" className="hover:text-foreground transition-colors">
                   About
                 </a>
