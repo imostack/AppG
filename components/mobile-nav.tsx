@@ -57,7 +57,7 @@ export function MobileNav() {
               </Link>
               <div className="border-t border-border/40 pt-4 mt-4">
                 <Button className="w-full" asChild>
-                  <a href="mailto:hello@appguts.com">Get in Touch</a>
+                  <a href="https://dashboard.appguts.com/login">Login</a>
                 </Button>
               </div>
             </div>
