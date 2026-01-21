@@ -40,14 +40,15 @@ export function ContactSection() {
             <h2 className="mb-8 text-5xl sm:text-6xl font-bold tracking-tight text-foreground">
               Get in touch
             </h2>
-            <div className="space-y-4 text-xl sm:text-2xl text-muted-foreground font-light leading-relaxed">
-              <p>
-                Interested in our platforms or need a custom solution?
-              </p>
-              <p className="text-foreground font-normal">
-                <a href="mailto:hello@appguts.com" className="hover:underline">hello@appguts.com</a>
-              </p>
-            </div>
+            <p className="text-xl sm:text-2xl text-muted-foreground font-light leading-relaxed mb-8">
+              Ready to get started? Tell us about your project and we'll help you find the right solution.
+            </p>
+            <Button size="lg" asChild className="bg-gradient-to-r from-primary to-purple-700 hover:from-primary/90 hover:to-purple-700/90 shadow-lg shadow-primary/20 text-base px-8 h-12">
+              <a href="https://onboarding.appguts.com" target="_blank" rel="noopener noreferrer">
+                Start Your Project
+                <PaperAirplaneIcon className="ml-2 h-5 w-5" />
+              </a>
+            </Button>
           </div>
         </ScrollReveal>
 

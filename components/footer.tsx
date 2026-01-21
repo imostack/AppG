@@ -16,12 +16,7 @@ export function Footer() {
               </li>
               <li>
                 <a href="/accessra-partnership" className="hover:text-foreground transition-colors">
-                  AccessRA Partnership
-                </a>
-              </li>
-              <li>
-                <a href="/custom-solutions" className="hover:text-foreground transition-colors">
-                  Custom Solutions
+                  AccessRA Platform
                 </a>
               </li>
             </ul>
@@ -64,13 +59,13 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/accessra-partnership" className="hover:text-foreground transition-colors">
-                  AccessRA Partnership
+                <a href="https://onboarding.appguts.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                  Start a Project
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@appguts.com" className="hover:text-foreground transition-colors">
-                  Contact Us
+                <a href="mailto:support@appguts.com" className="hover:text-foreground transition-colors">
+                  Support
                 </a>
               </li>
             </ul>
