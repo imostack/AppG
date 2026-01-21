@@ -15,7 +15,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/accessra-partnership" className="hover:text-foreground transition-colors">
+                <a href="/news/accessra-partnership" className="hover:text-foreground transition-colors">
                   AccessRA Platform
                 </a>
               </li>

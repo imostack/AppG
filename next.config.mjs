@@ -7,6 +7,15 @@ const nextConfig = {
       "avatars.githubusercontent.com", // GitHub profile images
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/accessra-partnership',
+        destination: '/news/accessra-partnership',
+        permanent: true, // 301 redirect for SEO
+      },
+    ]
+  },
 };
 
 export default nextConfig;

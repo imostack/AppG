@@ -26,7 +26,7 @@ const products = [
       "Launch your own branded eCommerce store in 3 minutes or less. Complete white-label solution where merchants can sell products, accept payments, track shipments, and customize their store on their own domain.",
     icon: RocketLaunchIcon,
     gradient: "from-blue-500 to-cyan-500",
-    link: "https://appguts.com/accessra-partnership",
+    link: "/news/accessra-partnership",
     linkText: "Learn about AccessRA",
     badge: "Coming Soon",
     features: [
