@@ -15,14 +15,15 @@ export function AboutSection() {
               </h2>
               <div className="space-y-6 text-lg sm:text-xl text-muted-foreground leading-relaxed">
                 <p>
-                  App Guts is a SaaS platform company building digital infrastructure for African communities and businesses.
+                  App Guts is a technology company building SaaS platforms and digital tools for African communities, creators, and businesses.
                 </p>
                 <p>
-                  Our flagship product is Events Kona — an event discovery and ticketing platform launching in Port Harcourt, Nigeria. It is the first of the platforms we are building, not the last.
+                 Our flagship product, Events Kona, is an event discovery, ticketing, and event management platform launching in Port Harcourt, Nigeria. It enables organizers to create events, sell tickets, and manage audiences through a modern platform built specifically for local realities.
                 </p>
                 <p>
-                  We believe Africa&apos;s creators, organizers, and communities deserve platforms built for their reality from day one — not tools adapted from markets that look nothing like ours.
+                 Events Kona is the first platform in a broader vision to build infrastructure that powers how African communities connect, organize, and grow online.
                 </p>
+                <p>We believe Africa’s creators and organizers deserve technology designed for their environment from day one — not solutions adapted from markets that look nothing like ours.</p>
               </div>
 
               {/* Stats */}

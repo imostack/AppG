@@ -1,6 +1,7 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { Features } from "@/components/features"
+import { WhoItsFor } from "@/components/who-its-for"
 import { WhyAppGuts } from "@/components/why-app-guts"
 import { AboutSection } from "@/components/about-section"
 import { ContactSection } from "@/components/contact-section"
@@ -13,6 +14,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Features />
+      <WhoItsFor />
       <WhyAppGuts />
       <AboutSection />
       <ContactSection />
