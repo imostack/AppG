@@ -11,12 +11,20 @@ export const metadata: Metadata = {
 
 const newsArticles = [
   {
-    slug: "accessra-partnership",
-    title: "AccessRA Partnership",
-    description: "Building Africa's next-generation white-label eCommerce platform for SMEs. Launch your own branded store in 3 minutes.",
-    badge: "In Development",
-    badgeColor: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
-    date: "2026",
+    slug: "events-kona-launch-2026",
+    title: "Events Kona Is Launching",
+    description: "Waitlist opens March 6, 2026. Platform goes live in April, starting in Port Harcourt, Nigeria. Here's everything you need to know.",
+    badge: "Announcement",
+    badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
+    date: "March 2026",
+  },
+  {
+    slug: "past-collaborations",
+    title: "Past Collaborations",
+    description: "Previous partnerships and initiatives from App Guts.",
+    badge: "Archived",
+    badgeColor: "bg-muted text-muted-foreground border-border/40",
+    date: "2025",
   },
 ]
 

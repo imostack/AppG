@@ -5,11 +5,11 @@ import { RocketIcon, LightningBoltIcon, CubeIcon } from "@radix-ui/react-icons"
 
 const capabilities = [
   {
-    title: "Community-First Design",
-    description: "Our platforms are built to connect people, from event discovery to commerce experiences that bring communities together.",
+    title: "Platform Builders",
+    description: "We design and ship complete digital platforms — from concept to production. Not just features, but full foundations that communities rely on.",
     icon: RocketIcon,
     gradient: "from-indigo-500 to-purple-600",
-    stats: "User-focused",
+    stats: "Full-stack platforms",
   },
   {
     title: "Africa-Ready Infrastructure",
@@ -19,11 +19,11 @@ const capabilities = [
     stats: "Multi-region",
   },
   {
-    title: "Enterprise Scale",
-    description: "Our platforms are designed to grow from hundreds to millions of users with robust infrastructure and reliable performance.",
+    title: "Flagship Focus",
+    description: "Our full energy goes into making Events Kona the best event platform in Africa — deep investment in one flagship rather than spreading thin.",
     icon: LightningBoltIcon,
     gradient: "from-purple-500 to-pink-600",
-    stats: "Production-ready",
+    stats: "Events Kona first",
   },
 ]
 
@@ -37,7 +37,7 @@ export function WhyAppGuts() {
               Why App Guts
             </h2>
             <p className="text-xl sm:text-2xl text-muted-foreground font-light leading-relaxed">
-              We build platforms designed for African markets that scale from day one.
+              We focus on building platforms that last — not just features, but foundations.
             </p>
           </div>
         </ScrollReveal>

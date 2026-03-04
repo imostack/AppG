@@ -14,11 +14,6 @@ export function Footer() {
                   Events Kona
                 </a>
               </li>
-              <li>
-                <a href="/news/accessra-partnership" className="hover:text-foreground transition-colors">
-                  AccessRA Platform
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -46,6 +41,11 @@ export function Footer() {
                   News
                 </a>
               </li>
+              <li>
+                <a href="/news/past-collaborations" className="hover:text-foreground transition-colors">
+                  Past Initiatives
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -53,11 +53,6 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-sm font-semibold text-foreground">Resources</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <a href="https://eventskona.com/login" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
-                  Events Kona Login
-                </a>
-              </li>
               <li>
                 <a href="https://onboarding.appguts.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   Start a Project

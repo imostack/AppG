@@ -2,38 +2,22 @@
 
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { Button } from "@/components/ui/button"
-import { RocketLaunchIcon, CalendarDaysIcon, ArrowRightIcon } from "@heroicons/react/24/outline"
+import { CalendarDaysIcon, ArrowRightIcon } from "@heroicons/react/24/outline"
 
 const products = [
   {
     title: "Events Kona",
-    description: "Event discovery and management platform connecting communities to memorable experiences across Africa. Browse events, purchase tickets, and connect with your community.",
+    description: "Our flagship platform for event discovery, ticketing, and community experiences across Africa. Now with a massive platform upgrade — new users can join the waitlist at eventskona.com.",
     icon: CalendarDaysIcon,
     gradient: "from-indigo-500 to-purple-600",
     link: "https://eventskona.com/",
     linkText: "Visit Events Kona",
-    badge: "Live",
+    badge: "Flagship",
     features: [
       "Multi-region event discovery",
       "Integrated ticketing & payments",
       "Community-driven platform",
       "Mobile-first experience"
-    ]
-  },
-  {
-    title: "AccessRA Platform",
-    description:
-      "Launch your own branded eCommerce store in 3 minutes or less. Complete white-label solution where merchants can sell products, accept payments, track shipments, and customize their store on their own domain.",
-    icon: RocketLaunchIcon,
-    gradient: "from-blue-500 to-cyan-500",
-    link: "/news/accessra-partnership",
-    linkText: "Learn about AccessRA",
-    badge: "Coming Soon",
-    features: [
-      "Store setup in 3 minutes",
-      "White-label with custom domain",
-      "Payment & shipment tracking",
-      "Full inventory management"
     ]
   },
 ]
@@ -48,7 +32,7 @@ export function Features() {
               Products
             </h2>
             <p className="text-xl sm:text-2xl text-muted-foreground font-light leading-relaxed">
-              Platforms connecting communities to experiences and businesses to growth.
+              We build platforms that connect communities and power businesses across Africa.
             </p>
           </div>
         </ScrollReveal>
@@ -72,11 +56,7 @@ export function Features() {
                           <div className="flex items-center gap-3 mb-3">
                             <h3 className="text-3xl font-semibold text-foreground">{product.title}</h3>
                             {product.badge && (
-                              <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${
-                                product.badge === "Live"
-                                  ? "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20"
-                                  : "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
-                              }`}>
+                              <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
                                 {product.badge}
                               </span>
                             )}
@@ -110,16 +90,16 @@ export function Features() {
                     <div className="border-t border-border/40 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-transparent p-8">
                       <div className="grid grid-cols-3 gap-6">
                         <div className="text-center">
-                          <div className="text-4xl font-bold text-foreground mb-2">8+</div>
-                          <div className="text-sm text-muted-foreground">Active Events</div>
+                          <div className="text-2xl font-bold text-foreground mb-2">Mar 6, 2026</div>
+                          <div className="text-sm text-muted-foreground">Waitlist Opens</div>
                         </div>
                         <div className="text-center border-l border-r border-border/40">
-                          <div className="text-4xl font-bold text-foreground mb-2">80+</div>
-                          <div className="text-sm text-muted-foreground">Attendees</div>
+                          <div className="text-2xl font-bold text-foreground mb-2">April 2026</div>
+                          <div className="text-sm text-muted-foreground">Platform Goes Live</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-4xl font-bold text-foreground mb-2">50+</div>
-                          <div className="text-sm text-muted-foreground">Organizers</div>
+                          <div className="text-2xl font-bold text-foreground mb-2">Port Harcourt</div>
+                          <div className="text-sm text-muted-foreground">First City, Nigeria</div>
                         </div>
                       </div>
                     </div>
@@ -129,6 +109,13 @@ export function Features() {
             )
           })}
         </div>
+
+        {/* More platforms placeholder */}
+        <ScrollReveal delay={0.2}>
+          <div className="mt-6 border border-dashed border-border/40 rounded-2xl p-8 text-center">
+            <p className="text-sm text-muted-foreground">More platforms in development</p>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   )

@@ -15,29 +15,29 @@ export function AboutSection() {
               </h2>
               <div className="space-y-6 text-lg sm:text-xl text-muted-foreground leading-relaxed">
                 <p>
-                  App Guts is a product company building platforms for African communities and businesses.
+                  App Guts is a platform company — we build digital platforms that power communities and businesses across Africa.
                 </p>
                 <p>
-                  We operate Events Kona, an event discovery platform connecting communities across multiple countries, and are partnering with AccessRA to launch a white-label eCommerce platform that enables merchants to set up their own branded store in minutes.
+                  We operate Events Kona, an event discovery and ticketing platform connecting communities to experiences across multiple countries in Africa.
                 </p>
                 <p>
-                  Our mission is to create accessible, scalable platforms that solve real problems for people and businesses across Africa.
+                  Our mission is to build platforms that are accessible, scalable, and designed for Africa from day one.
                 </p>
               </div>
 
               {/* Stats */}
               <div className="mt-12 grid grid-cols-3 gap-8">
                 <div>
-                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">2</div>
-                  <div className="text-sm text-muted-foreground">Live Products</div>
+                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">1</div>
+                  <div className="text-sm text-muted-foreground">Flagship Platform</div>
                 </div>
                 <div>
-                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">80+</div>
-                  <div className="text-sm text-muted-foreground">Active Users</div>
+                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">Apr 2026</div>
+                  <div className="text-sm text-muted-foreground">Going Live</div>
                 </div>
                 <div>
-                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">3+</div>
-                  <div className="text-sm text-muted-foreground">Countries</div>
+                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">PHC</div>
+                  <div className="text-sm text-muted-foreground">Port Harcourt, NG</div>
                 </div>
               </div>
             </div>
@@ -69,11 +69,13 @@ export function AboutSection() {
                     <div className="w-16 h-2 bg-muted/50 rounded" />
                   </div>
 
-                  {/* Card 2 - AccessRA */}
-                  <div className="absolute bottom-8 right-8 bg-background border border-border/40 rounded-xl p-4 shadow-xl backdrop-blur-sm transform rotate-6 hover:rotate-0 transition-transform duration-300">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 mb-3" />
-                    <div className="w-20 h-2 bg-muted rounded mb-2" />
-                    <div className="w-16 h-2 bg-muted/50 rounded" />
+                  {/* Card 2 - Coming Soon */}
+                  <div className="absolute bottom-8 right-8 bg-background border border-dashed border-border/40 rounded-xl p-4 shadow-xl backdrop-blur-sm transform rotate-6 hover:rotate-0 transition-transform duration-300">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-muted to-muted/50 mb-3 flex items-center justify-center">
+                      <span className="text-xs text-muted-foreground font-medium">+</span>
+                    </div>
+                    <div className="w-20 h-2 bg-muted/40 rounded mb-2" />
+                    <div className="w-12 h-2 bg-muted/20 rounded" />
                   </div>
 
                   {/* Center piece */}

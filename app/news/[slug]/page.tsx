@@ -1,232 +1,230 @@
 "use client"
 
-import { useState } from "react"
+import type { ReactNode } from "react"
 import { useParams, notFound } from "next/navigation"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { Button } from "@/components/ui/button"
-import { CheckCircle2, Zap, Shield, TrendingUp, Store, ArrowLeftIcon } from "lucide-react"
-import { WaitlistDialog } from "@/components/waitlist-dialog"
+import { ArrowLeftIcon, ArrowRightIcon, CalendarDaysIcon, MapPinIcon, UsersIcon, BellIcon } from "lucide-react"
 import Link from "next/link"
 
-// News/Announcement content data
+// ─── Article content map ─────────────────────────────────────────────────────
+
 const newsContent: Record<string, {
   title: string
   subtitle: string
   badge: string
   badgeColor: string
-  content: React.ReactNode
+  content: ReactNode
 }> = {
-  "accessra-partnership": {
-    title: "AccessRA Partnership",
-    subtitle: "Building Africa's next-generation white-label eCommerce platform for SMEs",
-    badge: "In Development",
-    badgeColor: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
-    content: <AccessRAContent />,
+  "events-kona-launch-2026": {
+    title: "Events Kona Is Launching",
+    subtitle: "Waitlist opens March 6, 2026. Platform goes live in April — starting in Port Harcourt, Nigeria.",
+    badge: "Announcement",
+    badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
+    content: <EventsKonaLaunchContent />,
+  },
+  "past-collaborations": {
+    title: "Past Collaborations",
+    subtitle: "Our previous partnership initiatives",
+    badge: "Archived",
+    badgeColor: "bg-muted text-muted-foreground",
+    content: <PastCollaborationsContent />,
   },
 }
 
-// AccessRA Partnership Content
-function AccessRAContent() {
-  const [dialogOpen, setDialogOpen] = useState(false)
+// ─── Events Kona Launch Article ───────────────────────────────────────────────
 
-  const features = [
+function EventsKonaLaunchContent() {
+  const milestones = [
     {
-      icon: Zap,
-      title: "Launch in 3 Minutes",
-      description: "Get your fully branded online store up and running in just 3 minutes. No technical expertise required.",
+      icon: BellIcon,
+      date: "March 6, 2026",
+      label: "Waitlist Opens",
+      description: "Sign up at eventskona.com to secure your spot. Existing beta testers retain full access.",
     },
     {
-      icon: Store,
-      title: "White-Label Solution",
-      description: "Complete brand control. Your store, your brand, your identity. Built on the AccessRA engine.",
+      icon: CalendarDaysIcon,
+      date: "April 2026",
+      label: "Platform Goes Live",
+      description: "Events Kona officially launches — event discovery, ticketing, and community features fully available.",
     },
     {
-      icon: Shield,
-      title: "Ownership & Control",
-      description: "Long-term ownership and full control over your store. No marketplace dependency.",
+      icon: MapPinIcon,
+      date: "Starting in",
+      label: "Port Harcourt, Nigeria",
+      description: "Our first city. We are building deep roots in the Port Harcourt community before expanding.",
     },
-    {
-      icon: TrendingUp,
-      title: "Built for Scale",
-      description: "Subscription-based with clear upgrade paths designed to grow with your business.",
-    },
-  ]
-
-  const benefits = [
-    "No engineering team required",
-    "Fully branded storefronts",
-    "Subscription-based pricing",
-    "Clear upgrade paths",
-    "Complete merchant ownership",
-    "Scalable infrastructure",
-    "Built for Nigerian SMEs",
-    "Expanding across Africa",
   ]
 
   return (
-    <>
-      {/* Hero CTA */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
-        <Button
-          size="lg"
-          onClick={() => setDialogOpen(true)}
-          className="bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white px-8 h-12 text-base font-medium shadow-lg shadow-blue-500/20"
-        >
-          Join the Waitlist
-        </Button>
-        <Button
-          size="lg"
-          variant="outline"
-          asChild
-          className="px-8 h-12 text-base font-medium"
-        >
-          <a href="https://accessra.com/" target="_blank" rel="noopener noreferrer">
-            Learn More
-          </a>
-        </Button>
-      </div>
+    <div className="max-w-3xl mx-auto space-y-16">
 
-      {/* Partnership Overview */}
+      {/* Intro */}
+      <ScrollReveal>
+        <div className="space-y-5 text-lg text-muted-foreground leading-relaxed">
+          <p>
+            After months of development and private testing, we are ready to open Events Kona to the public.
+            The platform has been rebuilt from the ground up — a comprehensive event discovery and ticketing
+            experience built specifically for communities in Nigeria and across Africa.
+          </p>
+          <p>
+            We are starting where we are: <strong className="text-foreground">Port Harcourt, Nigeria</strong>.
+            Our goal is not to spread thin across many cities at once — it is to build something people
+            genuinely rely on, right here at home, and grow from there.
+          </p>
+        </div>
+      </ScrollReveal>
+
+      {/* Timeline / milestones */}
+      <ScrollReveal delay={0.1}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-8">Key Dates</h2>
+          <div className="space-y-6">
+            {milestones.map((m, i) => {
+              const Icon = m.icon
+              return (
+                <div key={i} className="flex gap-5 p-6 rounded-2xl border border-border/40 bg-muted/10">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="p-2.5 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600">
+                      <Icon className="h-5 w-5 text-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-xs font-medium text-indigo-500 dark:text-indigo-400 uppercase tracking-wider mb-1">
+                      {m.date}
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">{m.label}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{m.description}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* Waitlist details */}
+      <ScrollReveal delay={0.15}>
+        <div className="p-8 sm:p-10 rounded-2xl border border-indigo-500/20 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-transparent">
+          <div className="flex items-start gap-4 mb-6">
+            <div className="p-2.5 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex-shrink-0 mt-0.5">
+              <UsersIcon className="h-5 w-5 text-white" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-foreground mb-2">About the Waitlist</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                The waitlist opens on <strong className="text-foreground">March 6, 2026</strong> at eventskona.com.
+                New users who sign up will join the list and receive access when we go live in April.
+              </p>
+            </div>
+          </div>
+          <div className="space-y-3 text-muted-foreground">
+            <div className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 flex-shrink-0" />
+              <p>Existing beta users who have been testing the platform can continue to log in and use it.</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 flex-shrink-0" />
+              <p>New users will enter their details and join the waitlist — access granted when the platform opens in April.</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 flex-shrink-0" />
+              <p>We are complying with NDPR guidelines — no broad user data collection before the official launch.</p>
+            </div>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* Why Port Harcourt */}
       <ScrollReveal delay={0.2}>
-        <div className="mt-20 p-8 sm:p-12 rounded-2xl border border-border/40 bg-gradient-to-br from-blue-500/5 via-cyan-500/5 to-background">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-            About the Partnership
-          </h2>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-5">Why Port Harcourt First</h2>
           <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
             <p>
-              App Guts Limited and AccessRA are partnering to create a revolutionary white-label eCommerce solution
-              specifically designed for small and medium enterprises in Nigeria and across Africa.
+              Port Harcourt is one of Nigeria&apos;s most vibrant cities — rich in culture, events, and
+              community life. It is also home. Starting here means we can listen closely, iterate quickly,
+              and build something that truly fits the community before expanding to other cities.
             </p>
             <p>
-              This platform empowers businesses and agencies to launch fully branded online stores without
-              the complexity and cost of building in-house engineering teams. Powered by the AccessRA engine,
-              the solution focuses on merchant ownership, scalability, and freedom from marketplace dependency.
+              Our plan is deliberate: get Port Harcourt right first, then grow. Events Kona is not just
+              another app — it is infrastructure for communities. That kind of trust is built city by city,
+              not overnight.
             </p>
           </div>
         </div>
       </ScrollReveal>
 
-      {/* Key Features */}
-      <section className="mt-20">
-        <ScrollReveal>
-          <div className="mb-12">
-            <h2 className="mb-6 text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-              Platform Features
-            </h2>
-            <p className="text-xl text-muted-foreground font-light leading-relaxed">
-              Everything you need to launch and scale your eCommerce business.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {features.map((feature, index) => {
-            const IconComponent = feature.icon
-            return (
-              <ScrollReveal key={feature.title} delay={index * 0.1}>
-                <div className="group relative bg-background border border-border/40 rounded-2xl p-8 hover:border-border transition-all duration-300 hover:shadow-xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-600 opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300" />
-                  <div className="relative">
-                    <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 mb-6">
-                      <IconComponent className="h-6 w-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-foreground mb-3">{feature.title}</h3>
-                    <p className="text-base text-muted-foreground leading-relaxed">{feature.description}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            )
-          })}
-        </div>
-      </section>
-
-      {/* Benefits Grid */}
-      <section className="mt-20 p-8 sm:p-12 rounded-2xl bg-muted/20">
-        <ScrollReveal>
-          <div className="mb-12">
-            <h2 className="mb-6 text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-              Why AccessRA?
-            </h2>
-            <p className="text-xl text-muted-foreground font-light leading-relaxed">
-              Built specifically for African SMEs with a focus on ownership and scalability.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {benefits.map((benefit, index) => (
-            <ScrollReveal key={benefit} delay={index * 0.05}>
-              <div className="flex items-center gap-3 p-4 rounded-lg border border-border/40 bg-background hover:border-border transition-colors">
-                <CheckCircle2 className="h-5 w-5 text-blue-500 flex-shrink-0" />
-                <span className="text-base text-foreground">{benefit}</span>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
-
-      {/* The Vision */}
-      <section className="mt-20">
-        <ScrollReveal>
-          <h2 className="mb-8 text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-            The Vision
-          </h2>
-          <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-            <p>
-              Starting in Nigeria, the AccessRA white-label eCommerce platform is designed to democratize
-              online retail for businesses of all sizes. By removing technical barriers and providing
-              a subscription-based model with clear upgrade paths, we're making enterprise-grade eCommerce
-              accessible to everyone.
-            </p>
-            <p>
-              Merchants retain full ownership and control over their stores, free from the constraints
-              of marketplace dependency. As the platform matures, we're expanding across Africa,
-              empowering thousands of businesses to compete globally while maintaining their unique brand identity.
-            </p>
-          </div>
-        </ScrollReveal>
-      </section>
-
-      {/* CTA Section */}
-      <section className="mt-20 p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-blue-500/5 via-cyan-500/5 to-background text-center">
-        <ScrollReveal>
-          <h2 className="mb-6 text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-            Ready to Get Started?
-          </h2>
-          <p className="mb-8 text-xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
-            Join the waitlist today and be among the first to launch your white-label store when we go live.
+      {/* CTA */}
+      <ScrollReveal delay={0.25}>
+        <div className="text-center p-8 sm:p-10 rounded-2xl border border-border/40 bg-muted/10">
+          <h2 className="text-2xl font-bold text-foreground mb-3">Be First In</h2>
+          <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
+            The waitlist opens March 6. Head to eventskona.com to sign up and secure your spot before we go live in April.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              size="lg"
-              onClick={() => setDialogOpen(true)}
-              className="bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white px-8 h-12 text-base font-medium shadow-lg shadow-blue-500/20"
-            >
-              Join the Waitlist
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="px-8 h-12 text-base font-medium"
-            >
-              <a href="mailto:hello@appguts.com?subject=AccessRA Partnership Inquiry">
-                Contact Us
-              </a>
-            </Button>
-          </div>
-          <p className="mt-8 text-sm text-muted-foreground">
-            Already have questions? Reach us at <a href="mailto:hello@appguts.com" className="text-foreground hover:underline">hello@appguts.com</a>
-          </p>
-        </ScrollReveal>
-      </section>
+          <Button size="lg" asChild className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12">
+            <a href="https://eventskona.com/" target="_blank" rel="noopener noreferrer">
+              Join the Waitlist at Events Kona
+              <ArrowRightIcon className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </ScrollReveal>
 
-      <WaitlistDialog open={dialogOpen} onOpenChange={setDialogOpen} />
-    </>
+    </div>
   )
 }
+
+// ─── Past Collaborations Article ─────────────────────────────────────────────
+
+function PastCollaborationsContent() {
+  return (
+    <ScrollReveal delay={0.2}>
+      <div className="max-w-3xl mx-auto space-y-12">
+        {/* Overview */}
+        <div className="p-8 sm:p-12 rounded-2xl border border-border/40 bg-muted/20">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+            AccessRA Partnership
+          </h2>
+          <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <p>
+              App Guts previously partnered with AccessRA to explore a white-label eCommerce solution
+              designed for small and medium enterprises across Africa.
+            </p>
+            <p>
+              The collaboration explored enabling businesses to launch fully branded online stores
+              without the complexity and cost of building in-house engineering teams.
+            </p>
+            <p>
+              As we focus our full efforts on building and growing our flagship platform, Events Kona,
+              this collaboration is currently inactive.
+            </p>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="text-center p-8 rounded-2xl border border-border/40">
+          <h2 className="text-2xl font-bold text-foreground mb-4">
+            Our flagship platform
+          </h2>
+          <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
+            All of our energy is now focused on Events Kona — event discovery and ticketing,
+            launching in Port Harcourt in April 2026.
+          </p>
+          <Button size="lg" asChild className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12">
+            <a href="https://eventskona.com/" target="_blank" rel="noopener noreferrer">
+              Visit Events Kona
+              <ArrowRightIcon className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </div>
+    </ScrollReveal>
+  )
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function NewsArticlePage() {
   const params = useParams()
@@ -243,7 +241,7 @@ export default function NewsArticlePage() {
       <Header />
       <main className="min-h-screen bg-background">
         <section className="px-4 py-20 sm:py-24 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-4xl">
             {/* Back link */}
             <ScrollReveal>
               <Link
@@ -257,14 +255,14 @@ export default function NewsArticlePage() {
 
             {/* Article Header */}
             <ScrollReveal>
-              <div className="text-center mb-12">
+              <div className="text-center mb-16">
                 <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${article.badgeColor} text-sm font-medium mb-6`}>
                   {article.badge}
                 </div>
                 <h1 className="mb-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
                   {article.title}
                 </h1>
-                <p className="text-xl sm:text-2xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed">
+                <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
                   {article.subtitle}
                 </p>
               </div>

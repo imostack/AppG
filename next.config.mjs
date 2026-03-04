@@ -11,8 +11,13 @@ const nextConfig = {
     return [
       {
         source: '/accessra-partnership',
-        destination: '/news/accessra-partnership',
-        permanent: true, // 301 redirect for SEO
+        destination: '/news/past-collaborations',
+        permanent: true,
+      },
+      {
+        source: '/news/accessra-partnership',
+        destination: '/news/past-collaborations',
+        permanent: true,
       },
     ]
   },

@@ -16,7 +16,7 @@ export function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 border-b border-border/40 backdrop-blur-xl bg-background/80"
+      className="sticky top-0 z-50 border-b border-border/40 bg-background/95 sm:backdrop-blur-sm sm:bg-background/90"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 sm:h-18 items-center justify-between">
