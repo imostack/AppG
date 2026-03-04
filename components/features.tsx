@@ -110,10 +110,31 @@ export function Features() {
           })}
         </div>
 
-        {/* More platforms placeholder */}
+        {/* Future Platforms Teaser */}
         <ScrollReveal delay={0.2}>
-          <div className="mt-6 border border-dashed border-border/40 rounded-2xl p-8 text-center">
-            <p className="text-sm text-muted-foreground">More platforms in development</p>
+          <div className="mt-16 pt-16 border-t border-border/40">
+            <div className="mb-10 max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">What&apos;s next</p>
+              <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                Events Kona is the first platform. Not the last.
+              </h3>
+              <p className="text-lg text-muted-foreground font-light leading-relaxed">
+                App Guts is building a portfolio of SaaS platforms for Africa. On our roadmap:
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {[
+                { label: "Community Platforms", description: "Tools for groups, clubs, and organisations to manage members and run events." },
+                { label: "Creator Tools", description: "Infrastructure for African content creators to monetise audiences and experiences." },
+                { label: "Business Automation", description: "Simple workflow and operations tools for small businesses and agencies." },
+              ].map((item) => (
+                <div key={item.label} className="p-6 rounded-xl border border-dashed border-border/40 bg-muted/10">
+                  <div className="w-2 h-2 rounded-full bg-muted-foreground/30 mb-4" />
+                  <h4 className="text-base font-semibold text-foreground mb-2">{item.label}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </ScrollReveal>
       </div>

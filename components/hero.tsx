@@ -50,26 +50,26 @@ export function Hero() {
             transition={{ duration: 0.6 }}
             className="text-center lg:text-left"
           >
-            {/* Main Headline - Platform Builder Positioning */}
+            {/* Main Headline */}
             <h1 className="mb-8 text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-              Digital platforms
+              Building platforms
               <br />
-              <span className="text-muted-foreground">that power Africa</span>
+              <span className="text-muted-foreground">that power communities</span>
             </h1>
 
-            {/* Subtitle - Clear value prop */}
+            {/* Subtitle */}
             <p className="mb-12 text-lg sm:text-xl text-muted-foreground lg:max-w-lg font-light leading-relaxed">
-              App Guts builds scalable digital platforms for communities and businesses across Africa. Events Kona is our flagship product.
+              App Guts develops modern SaaS platforms for creators, organizers, and businesses. Events Kona is our flagship — event discovery, ticketing, and community management built for Africa.
             </p>
 
-            {/* CTA Buttons - Product focused */}
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
               <Button
                 size="lg"
                 onClick={() => scrollToSection("products")}
-                className="bg-foreground text-background hover:bg-foreground/90 px-8 h-12 text-base font-medium"
+                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12 text-base font-medium shadow-lg shadow-indigo-500/20"
               >
-                Explore our products
+                Explore Events Kona
                 <ArrowRightIcon className="ml-2 h-4 w-4" />
               </Button>
               <Button
@@ -78,15 +78,15 @@ export function Hero() {
                 onClick={() => scrollToSection("about")}
                 className="px-8 h-12 text-base font-medium"
               >
-                About App Guts
+                Our Story
               </Button>
             </div>
 
-            {/* Product badges */}
+            {/* Product badge */}
             <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-indigo-500" />
-                <span className="font-medium">Events Kona — Flagship</span>
+                <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+                <span className="font-medium">Events Kona — Waitlist open Mar 6</span>
               </div>
             </div>
           </motion.div>

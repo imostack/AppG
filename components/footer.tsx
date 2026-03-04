@@ -43,7 +43,7 @@ export function Footer() {
               </li>
               <li>
                 <a href="/news/past-collaborations" className="hover:text-foreground transition-colors">
-                  Past Initiatives
+                  Our Journey
                 </a>
               </li>
             </ul>

@@ -11,17 +11,17 @@ export function AboutSection() {
           <ScrollReveal>
             <div>
               <h2 className="mb-8 text-5xl sm:text-6xl font-bold tracking-tight text-foreground">
-                About App Guts
+                Our Story
               </h2>
               <div className="space-y-6 text-lg sm:text-xl text-muted-foreground leading-relaxed">
                 <p>
-                  App Guts is a platform company — we build digital platforms that power communities and businesses across Africa.
+                  App Guts is a SaaS platform company building digital infrastructure for African communities and businesses.
                 </p>
                 <p>
-                  We operate Events Kona, an event discovery and ticketing platform connecting communities to experiences across multiple countries in Africa.
+                  Our flagship product is Events Kona — an event discovery and ticketing platform launching in Port Harcourt, Nigeria. It is the first of the platforms we are building, not the last.
                 </p>
                 <p>
-                  Our mission is to build platforms that are accessible, scalable, and designed for Africa from day one.
+                  We believe Africa&apos;s creators, organizers, and communities deserve platforms built for their reality from day one — not tools adapted from markets that look nothing like ours.
                 </p>
               </div>
 
