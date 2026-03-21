@@ -56,8 +56,8 @@ export function MobileNav() {
                 Contact
               </Link>
               <div className="border-t border-border/40 pt-4 mt-4">
-                <Button className="w-full" asChild>
-                  <a href="https://dashboard.appguts.com/login">Login</a>
+                <Button className="w-full bg-gradient-to-r from-primary to-purple-700 hover:from-primary/90 hover:to-purple-700/90" asChild>
+                  <a href="https://eventskona.com/waitlist" target="_blank" rel="noopener noreferrer">Join Waitlist</a>
                 </Button>
               </div>
             </div>

@@ -14,6 +14,11 @@ export function Footer() {
                   Events Kona
                 </a>
               </li>
+              <li>
+                <a href="https://eventskona.com/waitlist" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                  Join the Waitlist
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -21,11 +26,6 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-sm font-semibold text-foreground">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <a href="https://dashboard.appguts.com/login" className="hover:text-foreground transition-colors">
-                  Client Login
-                </a>
-              </li>
               <li>
                 <a href="/#about" className="hover:text-foreground transition-colors">
                   About
@@ -49,18 +49,18 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* --- Resources --- */}
+          {/* --- Contact --- */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold text-foreground">Resources</h4>
+            <h4 className="mb-4 text-sm font-semibold text-foreground">Contact</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="https://onboarding.appguts.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
-                  Start a Project
+                <a href="mailto:hello@appguts.com" className="hover:text-foreground transition-colors">
+                  hello@appguts.com
                 </a>
               </li>
               <li>
                 <a href="mailto:support@appguts.com" className="hover:text-foreground transition-colors">
-                  Support
+                  support@appguts.com
                 </a>
               </li>
             </ul>
