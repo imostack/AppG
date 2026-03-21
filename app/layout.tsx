@@ -60,7 +60,6 @@ export const metadata: Metadata = {
     canonical: "https://appguts.com",
   },
   appleWebApp: {
-    capable: true,
     statusBarStyle: "default",
     title: "App Guts",
   },
