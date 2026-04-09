@@ -14,20 +14,20 @@ export function WaitlistBanner() {
         <ScrollReveal>
           <div className="text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-6">
-              Waitlist Open — March 6, 2026
+              Launching Soon — Port Harcourt, Nigeria
             </div>
             <h2 className="mb-6 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-              Events Kona Is Launching
+              Events Kona Is Almost Here
             </h2>
             <p className="mb-10 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
-              The waitlist opens March 6, 2026. Events Kona goes live in April, starting in Port Harcourt, Nigeria. Be among the first in.
+              We&apos;re in final testing with our first cohort of organisers. Public launch is coming — join the waitlist to be first in line.
             </p>
             <Button
               size="lg"
               asChild
               className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12 text-base font-medium shadow-lg shadow-indigo-500/20"
             >
-              <a href="https://eventskona.com/" target="_blank" rel="noopener noreferrer">
+              <a href="https://eventskona.com/waitlist" target="_blank" rel="noopener noreferrer">
                 Join the Waitlist
                 <ArrowRightIcon className="ml-2 h-4 w-4" />
               </a>

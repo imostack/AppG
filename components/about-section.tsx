@@ -23,8 +23,8 @@ const milestones = [
   },
   {
     year: "Apr 2026",
-    label: "Platform goes live",
-    detail: "Events Kona launches publicly in Port Harcourt.",
+    label: "Final testing",
+    detail: "Organiser cohort testing underway. Public launch coming soon.",
     done: false,
     active: true,
   },

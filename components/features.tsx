@@ -90,12 +90,12 @@ export function Features() {
                     <div className="border-t border-border/40 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-transparent p-8">
                       <div className="grid grid-cols-3 gap-6">
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-foreground mb-2">Mar 6, 2026</div>
-                          <div className="text-sm text-muted-foreground">Waitlist Opens</div>
+                          <div className="text-2xl font-bold text-foreground mb-2">Waitlist Open</div>
+                          <div className="text-sm text-muted-foreground">Sign up now</div>
                         </div>
                         <div className="text-center border-l border-r border-border/40">
-                          <div className="text-2xl font-bold text-foreground mb-2">April 2026</div>
-                          <div className="text-sm text-muted-foreground">Platform Goes Live</div>
+                          <div className="text-2xl font-bold text-foreground mb-2">Launching Soon</div>
+                          <div className="text-sm text-muted-foreground">Final testing underway</div>
                         </div>
                         <div className="text-center">
                           <div className="text-2xl font-bold text-foreground mb-2">Port Harcourt</div>
