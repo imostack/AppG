@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://appguts.com",
+    canonical: "https://appguts.com/",
   },
   appleWebApp: {
     statusBarStyle: "default",

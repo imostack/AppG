@@ -5,8 +5,24 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline"
 import { openRoles } from "./data"
 
 export const metadata: Metadata = {
-  title: "Careers | App Guts",
+  title: "Careers",
   description: "Join the App Guts team. We're building platforms that connect communities and empower businesses across Africa.",
+  alternates: { canonical: "https://appguts.com/careers" },
+  openGraph: {
+    title: "Careers | App Guts",
+    description: "Join the App Guts team. We're building platforms that connect communities and empower businesses across Africa.",
+    url: "https://appguts.com/careers",
+    siteName: "App Guts",
+    images: [{ url: "/og-image.png", width: 1500, height: 498, alt: "App Guts — Careers" }],
+    locale: "en_NG",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Careers | App Guts",
+    description: "Join the App Guts team. We're building platforms that connect communities and empower businesses across Africa.",
+    images: ["/og-image.png"],
+  },
 }
 
 export default function CareersPage() {

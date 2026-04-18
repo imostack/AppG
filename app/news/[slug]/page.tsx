@@ -1,13 +1,66 @@
-"use client"
-
+import type { Metadata } from "next"
 import type { ReactNode } from "react"
-import { useParams, notFound } from "next/navigation"
+import { notFound } from "next/navigation"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { Button } from "@/components/ui/button"
 import { ArrowLeftIcon, ArrowRightIcon, CalendarDaysIcon, MapPinIcon, UsersIcon, BellIcon } from "lucide-react"
 import Link from "next/link"
+
+// ─── Article metadata (for SEO / OG) ─────────────────────────────────────────
+
+const articleMeta: Record<string, { title: string; description: string }> = {
+  "events-kona-launch-2026": {
+    title: "Events Kona Is Launching",
+    description:
+      "Waitlist opens March 6, 2026. Platform goes live in April — starting in Port Harcourt, Nigeria. Here's everything you need to know.",
+  },
+  "past-collaborations": {
+    title: "Past Collaborations",
+    description:
+      "Previous partnerships and initiatives from App Guts, including the AccessRA collaboration.",
+  },
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata> {
+  const meta = articleMeta[params.slug]
+  if (!meta) return {}
+
+  const url = `https://appguts.com/news/${params.slug}`
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${meta.title} | App Guts`,
+      description: meta.description,
+      url,
+      siteName: "App Guts",
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1500,
+          height: 498,
+          alt: meta.title,
+        },
+      ],
+      locale: "en_NG",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${meta.title} | App Guts`,
+      description: meta.description,
+      images: ["/og-image.png"],
+    },
+  }
+}
 
 // ─── Article content map ─────────────────────────────────────────────────────
 
@@ -16,21 +69,21 @@ const newsContent: Record<string, {
   subtitle: string
   badge: string
   badgeColor: string
-  content: ReactNode
+  Content: () => ReactNode
 }> = {
   "events-kona-launch-2026": {
     title: "Events Kona Is Launching",
     subtitle: "Waitlist opens March 6, 2026. Platform goes live in April — starting in Port Harcourt, Nigeria.",
     badge: "Announcement",
     badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
-    content: <EventsKonaLaunchContent />,
+    Content: EventsKonaLaunchContent,
   },
   "past-collaborations": {
     title: "Past Collaborations",
     subtitle: "Our previous partnership initiatives",
     badge: "Archived",
     badgeColor: "bg-muted text-muted-foreground",
-    content: <PastCollaborationsContent />,
+    Content: PastCollaborationsContent,
   },
 }
 
@@ -164,7 +217,7 @@ function EventsKonaLaunchContent() {
             The waitlist opens March 6. Head to eventskona.com to sign up and secure your spot before we go live in April.
           </p>
           <Button size="lg" asChild className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12">
-            <a href="https://eventskona.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://eventskona.com/waitlist" target="_blank" rel="noopener noreferrer">
               Join the Waitlist at Events Kona
               <ArrowRightIcon className="ml-2 h-4 w-4" />
             </a>
@@ -226,15 +279,14 @@ function PastCollaborationsContent() {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
-export default function NewsArticlePage() {
-  const params = useParams()
-  const slug = params.slug as string
-
-  const article = newsContent[slug]
+export default function NewsArticlePage({ params }: { params: { slug: string } }) {
+  const article = newsContent[params.slug]
 
   if (!article) {
     notFound()
   }
+
+  const { Content } = article
 
   return (
     <>
@@ -269,7 +321,7 @@ export default function NewsArticlePage() {
             </ScrollReveal>
 
             {/* Article Content */}
-            {article.content}
+            <Content />
           </div>
         </section>
       </main>

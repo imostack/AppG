@@ -7,6 +7,22 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline"
 export const metadata: Metadata = {
   title: "News",
   description: "Latest news and updates from App Guts. Stay informed about our products, partnerships, and company milestones.",
+  alternates: { canonical: "https://appguts.com/news" },
+  openGraph: {
+    title: "News & Updates | App Guts",
+    description: "Latest news and updates from App Guts. Stay informed about our products, partnerships, and company milestones.",
+    url: "https://appguts.com/news",
+    siteName: "App Guts",
+    images: [{ url: "/og-image.png", width: 1500, height: 498, alt: "App Guts News" }],
+    locale: "en_NG",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "News & Updates | App Guts",
+    description: "Latest news and updates from App Guts. Stay informed about our products, partnerships, and company milestones.",
+    images: ["/og-image.png"],
+  },
 }
 
 const newsArticles = [
