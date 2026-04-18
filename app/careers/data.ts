@@ -1,0 +1,117 @@
+export interface JobRole {
+  id: string
+  title: string
+  type: string
+  team: string
+  location: string
+  posted: string
+  summary: string
+  about: string[]
+  deliverable: string[]
+  requirements: string[]
+  niceToHave: string[]
+  timeline: string
+  compensation: string
+  apply: {
+    email: string
+    subject: string
+    instructions: string[]
+  }
+}
+
+export const openRoles: JobRole[] = [
+  {
+    id: "motion-designer",
+    title: "Motion Designer / Explainer Video Creator",
+    type: "Contract",
+    team: "Marketing",
+    location: "Remote",
+    posted: "April 2026",
+    summary:
+      "Create a short animated explainer video for EventsKona — our events ticketing platform launching in Nigeria. Clear deliverable, fast turnaround, fixed contract fee.",
+    about: [
+      "App Guts Limited is a product studio building digital platforms across Africa. Our flagship product, EventsKona, is an events discovery and ticketing platform focused on Nigeria — helping organisers sell tickets and helping people find things to do in their city.",
+      "We need a compelling animated explainer video that introduces EventsKona to first-time visitors: what it is, how it works for both attendees and event organisers, and why they should sign up.",
+    ],
+    deliverable: [
+      "One (1) animated explainer video, 60–90 seconds",
+      "Style: clean 2D motion graphics (modern SaaS explainer — not cartoon, not live action)",
+      "Voiceover: we will provide the script and can supply a VO track, or you can recommend an artist",
+      "Format: MP4 (1920×1080) + web-optimised version (1280×720)",
+      "Source files handed over on completion",
+      "Up to 2 rounds of revisions included",
+    ],
+    requirements: [
+      "Demonstrated portfolio of 2D animated explainer or product videos",
+      "Proficient in After Effects, Adobe Animate, or equivalent (e.g. Jitter, Rive, Cavalry)",
+      "Ability to work from a provided script and brand style guide",
+      "Clear communicator — we move fast and need timely updates",
+      "Available to start within the next 7 days",
+    ],
+    niceToHave: [
+      "Experience creating videos for fintech, SaaS, or consumer apps",
+      "Familiarity with African markets or audiences",
+      "Can handle scriptwriting if needed (optional add-on)",
+    ],
+    timeline: "3 weeks from project kick-off to final delivery",
+    compensation:
+      "Fixed contract fee. Rate negotiable based on experience and portfolio. Please include your rate in your application.",
+    apply: {
+      email: "careers@appguts.com",
+      subject: "Motion Designer – EventsKona Explainer Video",
+      instructions: [
+        "A link to your portfolio (2–3 relevant explainer video samples)",
+        "Your proposed rate for this project",
+        "Your earliest available start date",
+        "A brief note (3–5 sentences) on your approach to this type of project",
+      ],
+    },
+  },
+  {
+    id: "campus-brand-ambassador",
+    title: "Campus Brand Ambassador — Port Harcourt",
+    type: "Contract",
+    team: "Growth",
+    location: "Port Harcourt, Nigeria (On-ground)",
+    posted: "April 2026",
+    summary:
+      "Be the face of EventsKona on your campus. Drive sign-ups and awareness among students in Port Harcourt ahead of our launch — incentive-based, flexible, and a great line on your CV.",
+    about: [
+      "EventsKona is a new events discovery and ticketing platform launching in Nigeria. We're starting in Port Harcourt — one of Nigeria's most vibrant cities — and we want students to be first in line.",
+      "We're looking for energetic, well-connected students across Port Harcourt universities to help us get the word out. Your job is simple: introduce EventsKona to your peers, get them to sign up, and make noise about it on social media. In return, you earn cash incentives for every verified sign-up you drive.",
+    ],
+    deliverable: [
+      "Drive a minimum of 100 verified student sign-ups per month using your unique referral code",
+      "Distribute flyers and branded materials in high-traffic spots on campus (hostels, cafeterias, lecture theatres)",
+      "Post at least 4 pieces of EventsKona content per month on your personal social media (Instagram, X, TikTok, or WhatsApp Status)",
+      "Attend one virtual onboarding session and one monthly check-in call with the growth team",
+      "Submit a brief weekly update (voice note or short message) on activity and feedback from students",
+    ],
+    requirements: [
+      "Currently enrolled at a university or polytechnic in Port Harcourt (UniPort, RSUST, Ignatius Ajuru, Rivers State Poly, or similar)",
+      "Active on at least one social media platform with a genuine following among students",
+      "Well-connected on campus — you know people across faculties, not just your department",
+      "Reliable, self-motivated, and able to work without being micromanaged",
+      "Smartphone with internet access",
+    ],
+    niceToHave: [
+      "Previous experience in campus marketing, event promotion, or student union activities",
+      "Member of a student organisation, club, or association",
+      "Experience creating short-form video content (Reels, TikTok)",
+      "Passionate about events, music, nightlife, or campus culture",
+    ],
+    timeline: "1–3 month rolling contract, starting immediately",
+    compensation:
+      "Incentive-based. Earn per verified sign-up you refer, plus bonuses for hitting monthly targets. Top performers will be considered for a paid extension as EventsKona grows in PH.",
+    apply: {
+      email: "growth@appguts.com",
+      subject: "Campus Brand Ambassador – Port Harcourt",
+      instructions: [
+        "Your full name, university, faculty, and current level",
+        "A link to your most active social media profile",
+        "Two or three sentences on why you're the right person to rep EventsKona on your campus",
+        "Any previous campus marketing or brand rep experience (if none, that's fine — just tell us about yourself)",
+      ],
+    },
+  },
+]
