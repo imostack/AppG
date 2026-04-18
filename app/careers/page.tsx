@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline"
 import { openRoles } from "./data"
@@ -27,7 +29,9 @@ export const metadata: Metadata = {
 
 export default function CareersPage() {
   return (
-    <main className="min-h-screen px-4 py-20">
+    <>
+      <Header />
+      <main className="min-h-screen px-4 py-20">
       <div className="max-w-3xl mx-auto">
 
         {/* Back link */}
@@ -96,5 +100,7 @@ export default function CareersPage() {
 
       </div>
     </main>
+    <Footer />
+    </>
   )
 }
