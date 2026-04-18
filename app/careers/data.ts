@@ -30,7 +30,7 @@ export const openRoles: JobRole[] = [
     summary:
       "Create a short animated explainer video for EventsKona — our events ticketing platform launching in Nigeria. Clear deliverable, fast turnaround, fixed contract fee.",
     about: [
-      "App Guts Limited is a product studio building digital platforms across Africa. Our flagship product, EventsKona, is an events discovery and ticketing platform focused on Nigeria — helping organisers sell tickets and helping people find things to do in their city.",
+      "App Guts Limited is a SaaS company building platforms for African communities and businesses. Our flagship product, Events Kona, is an event discovery and ticketing platform focused on Nigeria — helping organisers sell tickets and helping people find things to do in their city.",
       "We need a compelling animated explainer video that introduces EventsKona to first-time visitors: what it is, how it works for both attendees and event organisers, and why they should sign up.",
     ],
     deliverable: [
