@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 
 export function Hero() {
@@ -25,12 +24,7 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* ── Left: headline + CTAs ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center lg:text-left"
-          >
+          <div className="text-center lg:text-left animate-fade-in">
             <h1 className="mb-8 text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
               Building platforms
               <br />
@@ -65,18 +59,13 @@ export function Hero() {
             <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
-                <span className="font-medium">Events Kona — Waitlist open Mar 6</span>
+                <span className="font-medium">Events Kona — Launching soon</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* ── Right: Events Kona organiser dashboard mockup ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative hidden lg:block"
-          >
+          <div className="relative hidden lg:block animate-slide-up">
             {/* Glow layer */}
             <div className="absolute -inset-4 bg-gradient-to-br from-indigo-500/10 via-purple-500/8 to-transparent rounded-3xl blur-2xl pointer-events-none" />
 
@@ -156,7 +145,6 @@ export function Hero() {
                 {/* Ticket type breakdown */}
                 <div className="space-y-2.5 pt-1 border-t border-border/30">
                   <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Ticket Breakdown</p>
-
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-[#7c3aed]" />
@@ -167,7 +155,6 @@ export function Hero() {
                       <span className="font-semibold text-foreground w-16 text-right">₦25,000</span>
                     </div>
                   </div>
-
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-indigo-400" />
@@ -195,12 +182,7 @@ export function Hero() {
             </div>
 
             {/* ── Floating "ticket sold" notification ── */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 1.1 }}
-              className="absolute -bottom-5 -right-5 z-10 bg-background border border-border/60 rounded-xl shadow-xl shadow-black/10 p-3 w-52"
-            >
+            <div className="absolute -bottom-5 -right-5 z-10 bg-background border border-border/60 rounded-xl shadow-xl shadow-black/10 p-3 w-52 animate-fade-in">
               <div className="flex items-start gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-[#7c3aed]/10 flex items-center justify-center shrink-0 text-base">
                   🎟
@@ -218,9 +200,9 @@ export function Hero() {
                   </svg>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
