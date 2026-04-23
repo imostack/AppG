@@ -28,9 +28,9 @@ export const metadata: Metadata = {
 const newsArticles = [
   {
     slug: "events-kona-launch-2026",
-    title: "Events Kona Is Launching",
-    description: "Waitlist opens March 6, 2026. Platform goes live in April, starting in Port Harcourt, Nigeria. Here's everything you need to know.",
-    badge: "Announcement",
+    title: "Events Kona Is Live",
+    description: "We have officially launched in Port Harcourt, Nigeria. Create events, sell tickets, and manage your audience — get started free today.",
+    badge: "Launch",
     badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
     date: "March 2026",
   },

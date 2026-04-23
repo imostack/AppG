@@ -46,7 +46,7 @@ export function ContactSection() {
           {/* Path 1 — Organisers & Attendees */}
           <ScrollReveal delay={0.1}>
             <a
-              href="https://eventskona.com"
+              href="https://eventskona.com/signup"
               target="_blank"
               rel="noopener noreferrer"
               className="group block rounded-2xl border border-border/50 bg-background p-7 hover:border-[#7c3aed]/40 hover:shadow-lg hover:shadow-[#7c3aed]/5 transition-all duration-300"
@@ -58,11 +58,10 @@ export function ContactSection() {
                 Event organisers &amp; attendees
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                Want to host or attend events on Events Kona? Join the waitlist — Port Harcourt
-                launches April 2026.
+                Events Kona is live in Port Harcourt. Create an account to host events, sell tickets, or discover what&apos;s on in your city.
               </p>
               <div className="flex items-center gap-1.5 text-sm font-semibold text-[#7c3aed]">
-                Join the waitlist
+                Create an account
                 <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </a>

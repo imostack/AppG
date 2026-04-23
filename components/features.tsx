@@ -7,11 +7,11 @@ import { CalendarDaysIcon, ArrowRightIcon } from "@heroicons/react/24/outline"
 const products = [
   {
     title: "Events Kona",
-    description: "Our flagship platform for event discovery, ticketing, and community experiences across Africa. Now with a massive platform upgrade — new users can join the waitlist at eventskona.com.",
+    description: "Our flagship platform for event discovery, ticketing, and community management across Africa. Now live in Port Harcourt, Nigeria — create events, sell tickets, and manage your audience in one place.",
     icon: CalendarDaysIcon,
     gradient: "from-indigo-500 to-purple-600",
-    link: "https://eventskona.com/",
-    linkText: "Visit Events Kona",
+    link: "https://eventskona.com/signup",
+    linkText: "Get Started Free",
     badge: "Flagship",
     features: [
       "Multi-region event discovery",
@@ -90,12 +90,12 @@ export function Features() {
                     <div className="border-t border-border/40 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-transparent p-8">
                       <div className="grid grid-cols-3 gap-6">
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-foreground mb-2">Waitlist Open</div>
-                          <div className="text-sm text-muted-foreground">Sign up now</div>
+                          <div className="text-2xl font-bold text-emerald-500 mb-2">Now Live</div>
+                          <div className="text-sm text-muted-foreground">Open to everyone</div>
                         </div>
                         <div className="text-center border-l border-r border-border/40">
-                          <div className="text-2xl font-bold text-foreground mb-2">Launching Soon</div>
-                          <div className="text-sm text-muted-foreground">Final testing underway</div>
+                          <div className="text-2xl font-bold text-foreground mb-2">Free to Start</div>
+                          <div className="text-sm text-muted-foreground">No upfront cost</div>
                         </div>
                         <div className="text-center">
                           <div className="text-2xl font-bold text-foreground mb-2">Port Harcourt</div>

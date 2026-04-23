@@ -12,9 +12,9 @@ import Link from "next/link"
 
 const articleMeta: Record<string, { title: string; description: string }> = {
   "events-kona-launch-2026": {
-    title: "Events Kona Is Launching",
+    title: "Events Kona Is Live",
     description:
-      "Waitlist opens March 6, 2026. Platform goes live in April — starting in Port Harcourt, Nigeria. Here's everything you need to know.",
+      "Events Kona has officially launched in Port Harcourt, Nigeria. Create events, sell tickets, and manage your audience — get started free today.",
   },
   "past-collaborations": {
     title: "Past Collaborations",
@@ -72,9 +72,9 @@ const newsContent: Record<string, {
   Content: () => ReactNode
 }> = {
   "events-kona-launch-2026": {
-    title: "Events Kona Is Launching",
-    subtitle: "Waitlist opens March 6, 2026. Platform goes live in April — starting in Port Harcourt, Nigeria.",
-    badge: "Announcement",
+    title: "Events Kona Is Live",
+    subtitle: "We launched in Port Harcourt, Nigeria. Create events, sell tickets, and grow your audience — starting today.",
+    badge: "Launch",
     badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
     Content: EventsKonaLaunchContent,
   },
@@ -93,15 +93,15 @@ function EventsKonaLaunchContent() {
   const milestones = [
     {
       icon: BellIcon,
-      date: "March 6, 2026",
-      label: "Waitlist Opens",
-      description: "Sign up at eventskona.com to secure your spot. Existing beta testers retain full access.",
+      date: "March 2026",
+      label: "Waitlist Opened",
+      description: "Early organisers signed up ahead of launch. Port Harcourt led the way.",
     },
     {
       icon: CalendarDaysIcon,
       date: "April 2026",
-      label: "Platform Goes Live",
-      description: "Events Kona officially launches — event discovery, ticketing, and community features fully available.",
+      label: "Platform Launched",
+      description: "Events Kona is officially live — event discovery, ticketing, and community features fully available in Port Harcourt.",
     },
     {
       icon: MapPinIcon,
@@ -166,25 +166,25 @@ function EventsKonaLaunchContent() {
               <UsersIcon className="h-5 w-5 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-foreground mb-2">About the Waitlist</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-2">We&apos;re Live</h2>
               <p className="text-muted-foreground leading-relaxed">
-                The waitlist opens on <strong className="text-foreground">March 6, 2026</strong> at eventskona.com.
-                New users who sign up will join the list and receive access when we go live in April.
+                Events Kona is now publicly available at <strong className="text-foreground">eventskona.com</strong>.
+                Create a free account to start hosting events or discover what&apos;s happening in Port Harcourt.
               </p>
             </div>
           </div>
           <div className="space-y-3 text-muted-foreground">
             <div className="flex items-start gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 flex-shrink-0" />
-              <p>Existing beta users who have been testing the platform can continue to log in and use it.</p>
+              <p>Early beta organisers who tested the platform already have full access and can continue using it.</p>
             </div>
             <div className="flex items-start gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 flex-shrink-0" />
-              <p>New users will enter their details and join the waitlist — access granted when the platform opens in April.</p>
+              <p>New users can sign up instantly at eventskona.com — no waitlist, no queue.</p>
             </div>
             <div className="flex items-start gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 flex-shrink-0" />
-              <p>We are complying with NDPR guidelines — no broad user data collection before the official launch.</p>
+              <p>We remain fully compliant with the Nigeria Data Protection Act (NDPA) 2023 in how we handle user data.</p>
             </div>
           </div>
         </div>
@@ -212,13 +212,13 @@ function EventsKonaLaunchContent() {
       {/* CTA */}
       <ScrollReveal delay={0.25}>
         <div className="text-center p-8 sm:p-10 rounded-2xl border border-border/40 bg-muted/10">
-          <h2 className="text-2xl font-bold text-foreground mb-3">Be First In</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-3">Start Today</h2>
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
-            The waitlist opens March 6. Head to eventskona.com to sign up and secure your spot before we go live in April.
+            Events Kona is live and free to get started. Create your account, set up your first event, and start selling tickets today.
           </p>
           <Button size="lg" asChild className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12">
-            <a href="https://eventskona.com/waitlist" target="_blank" rel="noopener noreferrer">
-              Join the Waitlist at Events Kona
+            <a href="https://eventskona.com/signup" target="_blank" rel="noopener noreferrer">
+              Get Started Free
               <ArrowRightIcon className="ml-2 h-4 w-4" />
             </a>
           </Button>
@@ -263,7 +263,7 @@ function PastCollaborationsContent() {
           </h2>
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
             All of our energy is now focused on Events Kona — event discovery and ticketing,
-            launching in Port Harcourt in April 2026.
+            now live in Port Harcourt, Nigeria.
           </p>
           <Button size="lg" asChild className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12">
             <a href="https://eventskona.com/" target="_blank" rel="noopener noreferrer">

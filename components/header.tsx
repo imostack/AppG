@@ -64,7 +64,7 @@ export function Header() {
             <ThemeToggle />
             <div className="hidden md:flex items-center gap-2">
               <Button asChild className="bg-gradient-to-r from-primary to-purple-700 hover:from-primary/90 hover:to-purple-700/90 shadow-lg shadow-primary/20">
-                <a href="https://eventskona.com/waitlist" target="_blank" rel="noopener noreferrer">Join Waitlist</a>
+                <a href="https://eventskona.com/signup" target="_blank" rel="noopener noreferrer">Get Started</a>
               </Button>
             </div>
           </div>

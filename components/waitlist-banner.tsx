@@ -13,22 +13,22 @@ export function WaitlistBanner() {
       <div className="relative mx-auto max-w-5xl">
         <ScrollReveal>
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-6">
-              Launching Soon — Port Harcourt, Nigeria
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-sm font-medium mb-6">
+              Now Live — Port Harcourt, Nigeria
             </div>
             <h2 className="mb-6 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-              Events Kona Is Almost Here
+              Events Kona Is Live
             </h2>
             <p className="mb-10 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
-              We&apos;re in final testing with our first cohort of organisers. Public launch is coming — join the waitlist to be first in line.
+              Our flagship platform has launched in Port Harcourt, Nigeria. Create events, sell tickets, and manage your audience — all in one place.
             </p>
             <Button
               size="lg"
               asChild
               className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12 text-base font-medium shadow-lg shadow-indigo-500/20"
             >
-              <a href="https://eventskona.com/waitlist" target="_blank" rel="noopener noreferrer">
-                Join the Waitlist
+              <a href="https://eventskona.com/signup" target="_blank" rel="noopener noreferrer">
+                Get Started Free
                 <ArrowRightIcon className="ml-2 h-4 w-4" />
               </a>
             </Button>

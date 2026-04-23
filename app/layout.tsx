@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | App Guts",
   },
   description:
-    "App Guts Limited builds modern SaaS platforms for African communities, creators, and businesses. Our flagship product Events Kona is an event discovery and ticketing platform launching in Port Harcourt, Nigeria in April 2026.",
+    "App Guts Limited builds modern SaaS platforms for African communities, creators, and businesses. Our flagship product Events Kona is a live event discovery and ticketing platform in Port Harcourt, Nigeria.",
   generator: "Next.js",
   applicationName: "App Guts",
   keywords: [
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "App Guts Limited — Building Platforms That Power Communities",
     description:
-      "App Guts builds modern SaaS platforms for African communities, creators, and businesses. Events Kona — event discovery and ticketing — launches in Port Harcourt, Nigeria, April 2026. Join the waitlist.",
+      "App Guts builds modern SaaS platforms for African communities, creators, and businesses. Events Kona — event discovery and ticketing — is now live in Port Harcourt, Nigeria. Get started free.",
     url: "https://appguts.com",
     siteName: "App Guts",
     images: [
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "App Guts Limited — Building Platforms That Power Communities",
     description:
-      "App Guts builds SaaS platforms for African communities. Events Kona launches in Port Harcourt, Nigeria, April 2026. Join the waitlist on March 6.",
+      "App Guts builds SaaS platforms for African communities. Events Kona is now live in Port Harcourt, Nigeria. Create events, sell tickets, get started free.",
     images: ["/og-image.png"],
     creator: "@appguts",
     site: "@appguts",
@@ -137,10 +137,10 @@ const softwareSchema = {
   applicationCategory: "EventApplication",
   operatingSystem: "Web",
   description:
-    "Events Kona is an event discovery, ticketing, and community management platform launching in Port Harcourt, Nigeria in April 2026.",
+    "Events Kona is a live event discovery, ticketing, and community management platform in Port Harcourt, Nigeria.",
   offers: {
     "@type": "Offer",
-    availability: "https://schema.org/PreOrder",
+    availability: "https://schema.org/InStock",
     url: "https://eventskona.com",
   },
   author: {

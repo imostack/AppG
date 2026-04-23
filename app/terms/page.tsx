@@ -36,9 +36,8 @@ const sections = [
             <strong>appguts.com</strong> — Our company website, providing information about App Guts and its products.
           </li>
           <li>
-            <strong>Events Kona (eventskona.com)</strong> — An event discovery, ticketing, and community management
-            platform. Events Kona is currently in pre-launch; new users may join a waitlist and will receive access
-            when the platform opens publicly in April 2026, starting in Port Harcourt, Nigeria.
+            <strong>Events Kona (eventskona.com)</strong> — A live event discovery, ticketing, and community management
+            platform, available in Port Harcourt, Nigeria.
           </li>
         </ul>
         <p className="mt-3">
@@ -61,15 +60,15 @@ const sections = [
   },
   {
     id: "4",
-    title: "4. Events Kona — Waitlist Terms",
+    title: "4. Events Kona — Platform Terms",
     content: (
       <>
-        <p>If you join the Events Kona waitlist:</p>
+        <p>By creating an account or using Events Kona:</p>
         <ul className="list-disc list-inside space-y-2 mt-3">
-          <li>You consent to App Guts contacting you with updates about the platform launch via the email address provided.</li>
-          <li>Joining the waitlist does not guarantee access to the platform or any specific feature set.</li>
-          <li>App Guts reserves the right to modify, delay, or discontinue the Events Kona platform at any time without liability.</li>
-          <li>Waitlist data is handled in accordance with our <Link href="/privacy" className="text-primary hover:underline">Privacy Policy</Link> and complies with the Nigeria Data Protection Act (NDPA) 2023.</li>
+          <li>You consent to App Guts contacting you with updates about the platform via the email address provided.</li>
+          <li>Access to specific features may vary based on your account type (attendee, organiser).</li>
+          <li>App Guts reserves the right to modify, suspend, or discontinue the Events Kona platform at any time without liability.</li>
+          <li>Your data is handled in accordance with our <Link href="/privacy" className="text-primary hover:underline">Privacy Policy</Link> and complies with the Nigeria Data Protection Act (NDPA) 2023.</li>
         </ul>
       </>
     ),
@@ -141,8 +140,8 @@ const sections = [
       <p>
         Our Services are provided on an &ldquo;as is&rdquo; and &ldquo;as available&rdquo; basis without warranties of
         any kind, express or implied. App Guts does not warrant that the Services will be uninterrupted, error-free, or
-        free from viruses or other harmful components. Pre-launch features (including the Events Kona waitlist) are
-        provided without any guarantee of availability or specific functionality.
+        free from viruses or other harmful components. Platform features are provided without any guarantee of
+        uninterrupted availability or specific functionality.
       </p>
     ),
   },

@@ -16,16 +16,16 @@ const milestones = [
     done: true,
   },
   {
-    year: "Mar 6, 2026",
-    label: "Waitlist opens",
+    year: "Mar 2026",
+    label: "Waitlist opened",
     detail: "First organiser sign-ups. Port Harcourt goes first.",
     done: true,
   },
   {
     year: "Apr 2026",
-    label: "Final testing",
-    detail: "Organiser cohort testing underway. Public launch coming soon.",
-    done: false,
+    label: "Events Kona launches",
+    detail: "Live in Port Harcourt, Nigeria. Create events, sell tickets, grow your audience.",
+    done: true,
     active: true,
   },
   {
@@ -59,7 +59,7 @@ export function AboutSection() {
                 </p>
                 <p>
                   Our flagship product, Events Kona, is an event discovery, ticketing, and
-                  management platform launching in Port Harcourt, Nigeria — built to work the
+                  management platform, now live in Port Harcourt, Nigeria — built to work the
                   way Nigerian organisers actually work, not adapted from markets that look
                   nothing like ours.
                 </p>

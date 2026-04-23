@@ -15,8 +15,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://eventskona.com/waitlist" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
-                  Join the Waitlist
+                <a href="https://eventskona.com/signup" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                  Get Started Free
                 </a>
               </li>
             </ul>
