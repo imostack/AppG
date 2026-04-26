@@ -59,6 +59,14 @@ const newsArticles = [
     date: "April 2026",
   },
   {
+    slug: "humanoid-robot-greets-bitcoin-2026-event-tech",
+    title: "A Humanoid Robot Is Greeting Attendees at Bitcoin 2026 — What This Means for Event Tech",
+    description: "Realbotix's Melody robot welcomed guests at the Bitcoin 2026 Conference in Las Vegas this week. Here's what this moment means for the future of events — and why African events need to catch up fast.",
+    badge: "Event Tech",
+    badgeColor: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+    date: "April 2026",
+  },
+  {
     slug: "what-we-saw-at-nigerian-events",
     title: "What We Saw at Nigerian Events Changed Everything",
     description: "We attended major events across Nigeria to study the ticketing experience. A Paystack receipt as a ticket. No QR codes. No validation. That night confirmed exactly why Events Kona needed to exist.",

@@ -41,6 +41,11 @@ const articleMeta: Record<string, { title: string; description: string }> = {
     description:
       "Easter Monday, April 6, 2026. EUI Centre, GRA, Port Harcourt. 16 comedians, a packed house, a red carpet that generated real buzz, and the South-South at its finest.",
   },
+  "humanoid-robot-greets-bitcoin-2026-event-tech": {
+    title: "A Humanoid Robot Is Greeting Attendees at Bitcoin 2026 — What This Means for Event Tech",
+    description:
+      "Realbotix's Melody robot is welcoming guests at the Bitcoin 2026 Conference in Las Vegas this week. Here's what this moment means for the future of events — and why African events need to catch up fast.",
+  },
   "past-collaborations": {
     title: "Past Collaborations",
     description:
@@ -138,6 +143,13 @@ const newsContent: Record<string, {
     badge: "Event Recap",
     badgeColor: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
     Content: MayorAndKingsContent,
+  },
+  "humanoid-robot-greets-bitcoin-2026-event-tech": {
+    title: "A Humanoid Robot Is Greeting Attendees at Bitcoin 2026 — What This Means for Event Tech",
+    subtitle: "Realbotix's Melody robot welcomed guests at the Bitcoin 2026 Conference in Las Vegas this week. Here's what this moment means for the future of events — and why African events need to catch up fast.",
+    badge: "Event Tech",
+    badgeColor: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+    Content: HumanoidRobotEventTechContent,
   },
   "past-collaborations": {
     title: "Past Collaborations",
@@ -834,6 +846,168 @@ function MayorAndKingsContent() {
           </Button>
         </div>
       </ScrollReveal>
+    </div>
+  )
+}
+
+// ─── Humanoid Robot at Bitcoin 2026 / Event Tech ─────────────────────────────
+
+function HumanoidRobotEventTechContent() {
+  const robotFeatures = [
+    { title: "39 degrees of freedom", body: "Melody's body achieves a range of motion closer to a human than any commercial humanoid before it — enabling natural head turns, hand gestures, and facial expressions that don't feel uncanny." },
+    { title: "Reconfigurable face and body panels", body: "M-Series robots can swap out physical appearance rapidly, allowing a single unit to take on different characters or branding for different event contexts." },
+    { title: "Proprietary AI platform", body: "Melody is powered by Realbotix's own AI, enabling it to hold conversations, answer questions about booths and schedules, and personalise interactions based on what each attendee says." },
+    { title: "Designed for high-traffic venues", body: "The system is optimised for environments with hundreds of simultaneous visitors — it stays on-task under noise, movement, and unpredictable human behaviour." },
+  ]
+
+  const whatThisMeans = [
+    { title: "Check-in is going digital everywhere", body: "From QR code scanning to biometric access, the era of paper lists and manual headcounts at event entrances is ending globally. The question for Nigerian organisers is whether they join this shift now or in five years." },
+    { title: "Attendee data is the new prize", body: "A humanoid robot greeting you at a conference door isn't just a showpiece — it's a data collection point. Every interaction feeds insights back to the organiser. Knowing who arrived, when, and what they asked is infrastructure. Most Nigerian events still have none of this." },
+    { title: "Personalisation at scale is the expectation", body: "Attendees at Bitcoin 2026 were addressed individually by a robot. In Lagos or Port Harcourt, an attendee buying a ticket still gets a WhatsApp message asking them to 'confirm payment.' The gap is closing — but not on its own." },
+    { title: "The barrier to entry is lower than you think", body: "You don't need a humanoid robot to modernise your event. You need ticketing software that handles payments, validates entry, and gives you real-time data. That infrastructure exists in Nigeria today." },
+  ]
+
+  return (
+    <div className="max-w-3xl mx-auto space-y-14">
+
+      <ScrollReveal>
+        <div className="space-y-5 text-lg text-muted-foreground leading-relaxed">
+          <p>
+            This week, at The Venetian Resort in Las Vegas, a humanoid robot named Melody walked up to conference attendees, said hello, and pointed them toward the booths they were looking for.
+          </p>
+          <p>
+            Melody is an M-Series robot built by Realbotix, a Canadian AI robotics company. She is serving as an official greeter at the Bitcoin 2026 Conference — one of the largest crypto and technology events in the world, running April 27–29, 2026. It is almost certainly the most visible deployment of a humanoid robot at a major live event to date.
+          </p>
+          <p>
+            It is a headline moment. But behind the spectacle is a signal worth understanding for anyone who organises, attends, or builds for live events.
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.1}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-5">Who is Realbotix and what is Melody?</h2>
+          <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <p>
+              Realbotix is known for building lifelike humanoid robots that blend patented robotics with advanced social AI. Their M-Series robots — of which Melody is the flagship deployed unit — are full-bodied humanoids built specifically for human-facing environments: hotels, conference centres, retail spaces, and now, event venues.
+            </p>
+            <p>
+              What makes Melody technically notable is not just her physical presence. It is the combination of hardware and AI working together in a live, unstructured environment.
+            </p>
+          </div>
+          <div className="mt-8 space-y-4">
+            {robotFeatures.map((item) => (
+              <div key={item.title} className="flex gap-4 p-5 rounded-xl border border-border/40 bg-muted/10">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2.5 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.15}>
+        <div className="p-8 rounded-2xl border border-blue-500/20 bg-blue-500/5">
+          <p className="text-lg text-muted-foreground leading-relaxed italic">
+            &ldquo;Melody will serve as an official greeter at the conference, welcoming attendees and helping them locate booths, and answering general questions.&rdquo;
+          </p>
+          <p className="mt-4 text-sm text-muted-foreground">
+            — Realbotix official press release, April 2026
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.2}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-5">Why this matters beyond the spectacle</h2>
+          <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <p>
+              A robot greeting people at a Bitcoin conference in Las Vegas is easy to dismiss as a tech industry flex. But the underlying direction it points to is real and moving fast. Live events are becoming technology products — not just social gatherings. The infrastructure around how people discover, attend, pay for, and experience events is being rebuilt from scratch worldwide.
+            </p>
+            <p>
+              The Bitcoin 2026 deployment is an extreme end of that spectrum. But the fundamental shift — from manual, analogue event management to digital, data-driven experiences — is happening at every level of the market.
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.25}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">What this means for events in Nigeria</h2>
+          <div className="space-y-4">
+            {whatThisMeans.map((item) => (
+              <div key={item.title} className="flex gap-4 p-5 rounded-xl border border-border/40 bg-muted/10">
+                <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2.5 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.3}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-5">Nigerian events don&apos;t need a robot. They need infrastructure.</h2>
+          <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+            <p>
+              Port Harcourt is one of Nigeria&apos;s most active event cities. Every weekend there are concerts, comedy shows, conferences, and community gatherings drawing hundreds to thousands of attendees. The energy is there. The culture is there. The infrastructure is not.
+            </p>
+            <p>
+              Most events still run on WhatsApp group chats, Paystack receipts used as &ldquo;tickets,&rdquo; and manual headcounts at the gate. Organisers have no dashboard. Attendees have no confirmation they can actually trust. Nobody has post-event data.
+            </p>
+            <p>
+              A humanoid robot greeting you at Bitcoin 2026 is ten steps ahead of where we are. But step one — selling real tickets that generate real QR codes that enable real check-in — is available right now, in Port Harcourt, today.
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.35}>
+        <div className="p-8 sm:p-10 rounded-2xl border border-indigo-500/20 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-transparent">
+          <h2 className="text-2xl font-bold text-foreground mb-4">Events Kona is that step one</h2>
+          <div className="space-y-3 text-muted-foreground leading-relaxed">
+            <p>
+              We are not building robots. We are building the ticketing and event management infrastructure that Nigerian organisers have needed for years. While Bitcoin 2026 attendees get greeted by Melody, an Events Kona attendee in Port Harcourt gets a QR code ticket in their inbox the moment they pay — and scans through the gate in under a second.
+            </p>
+            <ul className="space-y-2 mt-4">
+              {[
+                "Real ticket with a unique QR code — not a Paystack screenshot",
+                "Instant digital check-in at the gate — no paper lists",
+                "Live organiser dashboard — revenue, capacity, attendees in real time",
+                "Payouts to your Nigerian bank account after the event",
+                "Free to get started — 5.5% commission only when you earn",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.4}>
+        <div className="text-center p-8 sm:p-10 rounded-2xl border border-border/40 bg-muted/10">
+          <h2 className="text-2xl font-bold text-foreground mb-3">The future of events is digital. Start now.</h2>
+          <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
+            Events Kona is live in Port Harcourt. Create your event, sell tickets properly, and manage check-in with QR codes — no robot required.
+          </p>
+          <Button size="lg" asChild className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12">
+            <a href="https://eventskona.com/signup" target="_blank" rel="noopener noreferrer">
+              Get Started Free
+              <ArrowRightIcon className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </ScrollReveal>
+
     </div>
   )
 }
