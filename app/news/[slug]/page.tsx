@@ -51,12 +51,13 @@ const articleMeta: Record<string, { title: string; description: string }> = {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-  const meta = articleMeta[params.slug]
+  const { slug } = await params
+  const meta = articleMeta[slug]
   if (!meta) return {}
 
-  const url = `https://appguts.com/news/${params.slug}`
+  const url = `https://appguts.com/news/${slug}`
 
   return {
     title: meta.title,
@@ -887,8 +888,9 @@ function PastCollaborationsContent() {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
-export default function NewsArticlePage({ params }: { params: { slug: string } }) {
-  const article = newsContent[params.slug]
+export default async function NewsArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const article = newsContent[slug]
 
   if (!article) {
     notFound()
