@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
+import { getPublishedArticles } from "@/lib/news"
 
 export const metadata: Metadata = {
   title: "News",
@@ -25,74 +26,86 @@ export const metadata: Metadata = {
   },
 }
 
-const newsArticles = [
+// Hardcoded articles — these are the fallback / seed content.
+// Any slug present in Supabase will take precedence and replace the entry below.
+const hardcodedArticles = [
   {
     slug: "events-kona-launch-2026",
     title: "Events Kona Is Live",
     description: "We have officially launched in Port Harcourt, Nigeria. Create events, sell tickets, and manage your audience — get started free today.",
     badge: "Launch",
-    badgeColor: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
-    date: "April 2026",
-  },
-  {
-    slug: "sell-event-tickets-online-nigeria",
-    title: "How to Sell Event Tickets Online in Nigeria (2026 Guide)",
-    description: "Most Nigerian event organisers still rely on WhatsApp broadcasts and manual bank transfers. Here's why that's costing you — and how to do it properly.",
-    badge: "Guide",
-    badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
-    date: "April 2026",
-  },
-  {
-    slug: "events-kona-organiser-guide",
-    title: "Events Kona for Organisers: The Complete Guide",
-    description: "Everything you need to know about creating events, setting up ticket types, managing capacity, and getting paid on Events Kona.",
-    badge: "Guide",
-    badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
-    date: "April 2026",
-  },
-  {
-    slug: "why-port-harcourt",
-    title: "Why We Started in Port Harcourt",
-    description: "Port Harcourt has one of Nigeria's most vibrant event scenes. Here's why it was the only right place to begin — and what that means for how we build.",
-    badge: "Story",
-    badgeColor: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
-    date: "April 2026",
+    badge_color: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+    date_label: "April 2026",
   },
   {
     slug: "humanoid-robot-greets-bitcoin-2026-event-tech",
     title: "A Humanoid Robot Is Greeting Attendees at Bitcoin 2026 — What This Means for Event Tech",
     description: "Realbotix's Melody robot welcomed guests at the Bitcoin 2026 Conference in Las Vegas this week. Here's what this moment means for the future of events — and why African events need to catch up fast.",
     badge: "Event Tech",
-    badgeColor: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
-    date: "April 2026",
+    badge_color: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+    date_label: "April 2026",
+  },
+  {
+    slug: "sell-event-tickets-online-nigeria",
+    title: "How to Sell Event Tickets Online in Nigeria (2026 Guide)",
+    description: "Most Nigerian event organisers still rely on WhatsApp broadcasts and manual bank transfers. Here's why that's costing you — and how to do it properly.",
+    badge: "Guide",
+    badge_color: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
+    date_label: "April 2026",
+  },
+  {
+    slug: "events-kona-organiser-guide",
+    title: "Events Kona for Organisers: The Complete Guide",
+    description: "Everything you need to know about creating events, setting up ticket types, managing capacity, and getting paid on Events Kona.",
+    badge: "Guide",
+    badge_color: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
+    date_label: "April 2026",
+  },
+  {
+    slug: "why-port-harcourt",
+    title: "Why We Started in Port Harcourt",
+    description: "Port Harcourt has one of Nigeria's most vibrant event scenes. Here's why it was the only right place to begin — and what that means for how we build.",
+    badge: "Story",
+    badge_color: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
+    date_label: "April 2026",
   },
   {
     slug: "what-we-saw-at-nigerian-events",
     title: "What We Saw at Nigerian Events Changed Everything",
     description: "We attended major events across Nigeria to study the ticketing experience. A Paystack receipt as a ticket. No QR codes. No validation. That night confirmed exactly why Events Kona needed to exist.",
     badge: "Story",
-    badgeColor: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
-    date: "April 2026",
+    badge_color: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
+    date_label: "April 2026",
   },
   {
     slug: "mayor-and-12-kings-2026",
     title: "Mayor and the 12 Kings 2026: Port Harcourt's Biggest Comedy Night",
     description: "Easter Monday, April 6, 2026. EUI Centre, GRA, Port Harcourt. 16 comedians, a packed house, a red carpet that generated real buzz, and the South-South at its finest.",
     badge: "Event Recap",
-    badgeColor: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
-    date: "April 2026",
+    badge_color: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+    date_label: "April 2026",
   },
   {
     slug: "past-collaborations",
     title: "Past Collaborations",
     description: "Previous partnerships and initiatives from App Guts.",
     badge: "Archived",
-    badgeColor: "bg-muted text-muted-foreground border-border/40",
-    date: "2025",
+    badge_color: "bg-muted text-muted-foreground border-border/40",
+    date_label: "2025",
   },
 ]
 
-export default function NewsPage() {
+export default async function NewsPage() {
+  // Fetch agent-written articles from Supabase
+  const dbArticles = await getPublishedArticles()
+
+  // Merge: DB articles first (newest), then hardcoded articles not already in DB
+  const dbSlugs = new Set(dbArticles.map((a) => a.slug))
+  const merged = [
+    ...dbArticles,
+    ...hardcodedArticles.filter((a) => !dbSlugs.has(a.slug)),
+  ]
+
   return (
     <>
       <Header />
@@ -109,7 +122,7 @@ export default function NewsPage() {
             </div>
 
             <div className="space-y-6">
-              {newsArticles.map((article) => (
+              {merged.map((article) => (
                 <Link
                   key={article.slug}
                   href={`/news/${article.slug}`}
@@ -119,10 +132,10 @@ export default function NewsPage() {
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
-                          <span className={`text-xs font-medium px-2.5 py-1 rounded-full border ${article.badgeColor}`}>
+                          <span className={`text-xs font-medium px-2.5 py-1 rounded-full border ${article.badge_color}`}>
                             {article.badge}
                           </span>
-                          <span className="text-sm text-muted-foreground">{article.date}</span>
+                          <span className="text-sm text-muted-foreground">{article.date_label}</span>
                         </div>
                         <h2 className="text-2xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                           {article.title}

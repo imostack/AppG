@@ -4,6 +4,8 @@ import { notFound } from "next/navigation"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ScrollReveal } from "@/components/scroll-reveal"
+import { NewsRenderer } from "@/components/news-renderer"
+import { getArticleBySlug } from "@/lib/news"
 import { Button } from "@/components/ui/button"
 import { ArrowLeftIcon, ArrowRightIcon, CalendarDaysIcon, MapPinIcon, UsersIcon, BellIcon } from "lucide-react"
 import Link from "next/link"
@@ -59,35 +61,33 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const meta = articleMeta[slug]
-  if (!meta) return {}
+
+  // Try Supabase first, fall back to hardcoded map
+  const dbArticle = await getArticleBySlug(slug)
+  const title = dbArticle?.title ?? articleMeta[slug]?.title
+  const description = dbArticle?.description ?? articleMeta[slug]?.description
+
+  if (!title) return {}
 
   const url = `https://appguts.com/news/${slug}`
 
   return {
-    title: meta.title,
-    description: meta.description,
+    title,
+    description,
     alternates: { canonical: url },
     openGraph: {
-      title: `${meta.title} | App Guts`,
-      description: meta.description,
+      title: `${title} | App Guts`,
+      description,
       url,
       siteName: "App Guts",
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1500,
-          height: 498,
-          alt: meta.title,
-        },
-      ],
+      images: [{ url: "/og-image.png", width: 1500, height: 498, alt: title }],
       locale: "en_NG",
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${meta.title} | App Guts`,
-      description: meta.description,
+      title: `${title} | App Guts`,
+      description,
       images: ["/og-image.png"],
     },
   }
@@ -1064,11 +1064,51 @@ function PastCollaborationsContent() {
 
 export default async function NewsArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const article = newsContent[slug]
 
-  if (!article) {
-    notFound()
+  // Try Supabase first (agent-written articles)
+  const dbArticle = await getArticleBySlug(slug)
+
+  if (dbArticle) {
+    return (
+      <>
+        <Header />
+        <main className="min-h-screen bg-background">
+          <section className="px-4 py-20 sm:py-24 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-4xl">
+              <ScrollReveal>
+                <Link
+                  href="/news"
+                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+                >
+                  <ArrowLeftIcon className="h-4 w-4" />
+                  Back to News
+                </Link>
+              </ScrollReveal>
+              <ScrollReveal>
+                <div className="text-center mb-16">
+                  <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${dbArticle.badge_color} text-sm font-medium mb-6`}>
+                    {dbArticle.badge}
+                  </div>
+                  <h1 className="mb-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
+                    {dbArticle.title}
+                  </h1>
+                  <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
+                    {dbArticle.subtitle}
+                  </p>
+                </div>
+              </ScrollReveal>
+              <NewsRenderer blocks={dbArticle.content_blocks} />
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </>
+    )
   }
+
+  // Fall back to hardcoded content
+  const article = newsContent[slug]
+  if (!article) notFound()
 
   const { Content } = article
 
@@ -1078,7 +1118,6 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
       <main className="min-h-screen bg-background">
         <section className="px-4 py-20 sm:py-24 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
-            {/* Back link */}
             <ScrollReveal>
               <Link
                 href="/news"
@@ -1088,8 +1127,6 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                 Back to News
               </Link>
             </ScrollReveal>
-
-            {/* Article Header */}
             <ScrollReveal>
               <div className="text-center mb-16">
                 <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${article.badgeColor} text-sm font-medium mb-6`}>
@@ -1103,8 +1140,6 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                 </p>
               </div>
             </ScrollReveal>
-
-            {/* Article Content */}
             <Content />
           </div>
         </section>
