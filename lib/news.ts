@@ -34,7 +34,7 @@ export async function getPublishedArticles(): Promise<ArticleSummary[]> {
   try {
     const res = await fetch(
       `${SUPABASE_URL}/rest/v1/news_articles?published=eq.true&select=slug,title,description,badge,badge_color,date_label,created_at&order=created_at.desc`,
-      { headers, next: { revalidate: 3600 } } as RequestInit
+      { headers, next: { revalidate: 300 } } as RequestInit
     )
     if (!res.ok) return []
     return res.json()
@@ -47,7 +47,7 @@ export const getArticleBySlug = cache(async (slug: string): Promise<DBArticle | 
   try {
     const res = await fetch(
       `${SUPABASE_URL}/rest/v1/news_articles?slug=eq.${encodeURIComponent(slug)}&published=eq.true&select=*&limit=1`,
-      { headers, next: { revalidate: 3600 } } as RequestInit
+      { headers, next: { revalidate: 300 } } as RequestInit
     )
     if (!res.ok) return null
     const data: DBArticle[] = await res.json()
