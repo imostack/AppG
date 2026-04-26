@@ -1,7 +1,15 @@
 import { cache } from "react"
-import { supabase } from "./supabase"
 export type { ContentBlock } from "./content-blocks"
 import type { ContentBlock } from "./content-blocks"
+
+// Uses Supabase REST API directly via fetch — no JS client, no client-side bundle risk.
+const SUPABASE_URL     = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+
+const headers = {
+  Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+  apikey: SUPABASE_ANON_KEY,
+}
 
 export type DBArticle = {
   id: string
@@ -22,35 +30,28 @@ export type ArticleSummary = Pick<
   "slug" | "title" | "description" | "badge" | "badge_color" | "date_label" | "created_at"
 >
 
-// ─── Fetch helpers ────────────────────────────────────────────────────────────
-
 export async function getPublishedArticles(): Promise<ArticleSummary[]> {
   try {
-    const { data, error } = await supabase
-      .from("news_articles")
-      .select("slug, title, description, badge, badge_color, date_label, created_at")
-      .eq("published", true)
-      .order("created_at", { ascending: false })
-
-    if (error) return []
-    return (data ?? []) as ArticleSummary[]
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/news_articles?published=eq.true&select=slug,title,description,badge,badge_color,date_label,created_at&order=created_at.desc`,
+      { headers, next: { revalidate: 3600 } } as RequestInit
+    )
+    if (!res.ok) return []
+    return res.json()
   } catch {
     return []
   }
 }
 
-// cache() deduplicates calls within a single request (generateMetadata + page component)
 export const getArticleBySlug = cache(async (slug: string): Promise<DBArticle | null> => {
   try {
-    const { data, error } = await supabase
-      .from("news_articles")
-      .select("*")
-      .eq("slug", slug)
-      .eq("published", true)
-      .single()
-
-    if (error) return null
-    return data as DBArticle
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/news_articles?slug=eq.${encodeURIComponent(slug)}&published=eq.true&select=*&limit=1`,
+      { headers, next: { revalidate: 3600 } } as RequestInit
+    )
+    if (!res.ok) return null
+    const data: DBArticle[] = await res.json()
+    return data[0] ?? null
   } catch {
     return null
   }
