@@ -16,6 +16,21 @@ const articleMeta: Record<string, { title: string; description: string }> = {
     description:
       "Events Kona has officially launched in Port Harcourt, Nigeria. Create events, sell tickets, and manage your audience — get started free today.",
   },
+  "sell-event-tickets-online-nigeria": {
+    title: "How to Sell Event Tickets Online in Nigeria (2026 Guide)",
+    description:
+      "Most Nigerian event organisers still rely on WhatsApp broadcasts and manual bank transfers. Here's why that's costing you — and how to do it properly.",
+  },
+  "events-kona-organiser-guide": {
+    title: "Events Kona for Organisers: The Complete Guide",
+    description:
+      "Everything you need to know about creating events, setting up ticket types, managing capacity, and getting paid on Events Kona.",
+  },
+  "why-port-harcourt": {
+    title: "Why We Started in Port Harcourt",
+    description:
+      "Port Harcourt has one of Nigeria's most vibrant event scenes. Here's why it was the only right place to begin — and what that means for how we build.",
+  },
   "past-collaborations": {
     title: "Past Collaborations",
     description:
@@ -77,6 +92,27 @@ const newsContent: Record<string, {
     badge: "Launch",
     badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
     Content: EventsKonaLaunchContent,
+  },
+  "sell-event-tickets-online-nigeria": {
+    title: "How to Sell Event Tickets Online in Nigeria (2026 Guide)",
+    subtitle: "Most Nigerian event organisers still rely on WhatsApp and bank transfers. Here's why that's costing you — and how to do it properly.",
+    badge: "Guide",
+    badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
+    Content: SellTicketsNigeriaContent,
+  },
+  "events-kona-organiser-guide": {
+    title: "Events Kona for Organisers: The Complete Guide",
+    subtitle: "Everything you need to create events, manage tickets, track revenue, and get paid on Events Kona.",
+    badge: "Guide",
+    badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
+    Content: OrganiserGuideContent,
+  },
+  "why-port-harcourt": {
+    title: "Why We Started in Port Harcourt",
+    subtitle: "Port Harcourt has one of Nigeria's most vibrant event scenes. Here's why it was the only right place to begin.",
+    badge: "Story",
+    badgeColor: "bg-purple-500/10 text-purple-600 dark:text-purple-400",
+    Content: WhyPortHarcourtContent,
   },
   "past-collaborations": {
     title: "Past Collaborations",
@@ -215,6 +251,348 @@ function EventsKonaLaunchContent() {
           <h2 className="text-2xl font-bold text-foreground mb-3">Start Today</h2>
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
             Events Kona is live and free to get started. Create your account, set up your first event, and start selling tickets today.
+          </p>
+          <Button size="lg" asChild className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12">
+            <a href="https://eventskona.com/signup" target="_blank" rel="noopener noreferrer">
+              Get Started Free
+              <ArrowRightIcon className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </ScrollReveal>
+
+    </div>
+  )
+}
+
+// ─── How to Sell Event Tickets Online in Nigeria ─────────────────────────────
+
+function SellTicketsNigeriaContent() {
+  return (
+    <div className="max-w-3xl mx-auto space-y-14">
+
+      <ScrollReveal>
+        <div className="space-y-5 text-lg text-muted-foreground leading-relaxed">
+          <p>
+            If you have organised an event in Nigeria, you already know the routine: create a flyer, share it on WhatsApp, ask people to pay into your account, then manually confirm each payment and send a ticket screenshot back. Repeat 200 times.
+          </p>
+          <p>
+            It works — until it doesn&apos;t. Payments go untracked. Fake payment screenshots circulate. Reconciliation takes hours the night before the event. And when it&apos;s over, you have no data about who actually attended.
+          </p>
+          <p>
+            Online ticketing solves all of this. Here is what to look for, and how to get started.
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.1}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Why the old way is costing you</h2>
+          <div className="space-y-4">
+            {[
+              { title: "No attendee data", body: "WhatsApp-based ticketing gives you no record of who came, what they paid, or how they found you. Every event starts from zero." },
+              { title: "Fraud and fake screenshots", body: "Manual payment confirmation means any edited screenshot can get someone through your door. It happens at almost every large event." },
+              { title: "Time lost on reconciliation", body: "Hours spent matching bank alerts to WhatsApp messages the day before your event is time you should spend on logistics." },
+              { title: "No capacity control", body: "Without a system enforcing ticket limits, events oversell. Turning people away at the door damages your reputation permanently." },
+            ].map((item) => (
+              <div key={item.title} className="flex gap-4 p-5 rounded-xl border border-border/40 bg-muted/10">
+                <div className="w-1.5 h-1.5 rounded-full bg-destructive mt-2.5 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.15}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">What to look for in a ticketing platform</h2>
+          <div className="space-y-4">
+            {[
+              { title: "Nigerian payment support", body: "Your platform must accept Paystack, Flutterwave, or direct bank transfer. A platform that only accepts Stripe or PayPal is useless for most of your audience." },
+              { title: "Payouts in Naira", body: "Revenue should hit your Nigerian bank account quickly — not sit in a foreign wallet requiring withdrawal. Look for platforms with fast, local payout cycles." },
+              { title: "Mobile-first experience", body: "Most of your attendees will buy tickets on a phone. If the checkout experience is poor on mobile, you will lose sales." },
+              { title: "QR code check-in", body: "Physical ticket stubs get lost and can be duplicated. QR code scanning at the door is faster, more secure, and gives you real attendance data." },
+              { title: "Organiser dashboard", body: "You need real-time visibility into how many tickets have sold, revenue to date, and how close you are to capacity — not a spreadsheet export at the end." },
+            ].map((item) => (
+              <div key={item.title} className="flex gap-4 p-5 rounded-xl border border-border/40 bg-muted/10">
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2.5 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.2}>
+        <div className="p-8 sm:p-10 rounded-2xl border border-indigo-500/20 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-transparent">
+          <h2 className="text-2xl font-bold text-foreground mb-4">Events Kona is built for exactly this</h2>
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Events Kona is a Nigerian-built event ticketing and discovery platform, live in Port Harcourt. It was designed around the way Nigerian organisers and attendees actually work — not adapted from a European or American product.
+            </p>
+            <ul className="space-y-2">
+              {[
+                "Payments via Paystack — Naira only, works on every Nigerian bank",
+                "Payouts directly to your local bank account",
+                "QR code tickets that scan instantly at the door",
+                "Live dashboard: revenue, tickets sold, capacity, payout status",
+                "Multiple ticket types — Regular, VIP, Early Bird, and more",
+                "Free to get started — we only earn when you do (5.5% per ticket sold)",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.25}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">How to start selling tickets on Events Kona</h2>
+          <div className="space-y-4">
+            {[
+              { step: "1", title: "Create a free account", body: "Sign up at eventskona.com. No monthly fee, no setup cost. Your account is ready instantly." },
+              { step: "2", title: "Create your event", body: "Add your event name, date, location, description, and a cover image. Takes under five minutes." },
+              { step: "3", title: "Set up your ticket types", body: "Create as many ticket types as you need — Regular, VIP, Early Bird. Set the price, capacity, and sale window for each." },
+              { step: "4", title: "Share your event link", body: "Every event gets a dedicated page on Events Kona. Share the link anywhere — WhatsApp, Instagram, anywhere you already have an audience." },
+              { step: "5", title: "Track sales in real time", body: "Watch your dashboard as tickets sell. See revenue, capacity, and individual orders as they come in." },
+              { step: "6", title: "Check in attendees", body: "At the door, use the built-in QR scanner on any phone. Each ticket scans in under a second." },
+              { step: "7", title: "Get paid", body: "After your event, your payout hits your Nigerian bank account. We keep 5.5% — you keep the rest." },
+            ].map((item) => (
+              <div key={item.step} className="flex gap-5 p-5 rounded-xl border border-border/40 bg-muted/10">
+                <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-500 font-bold text-sm flex items-center justify-center flex-shrink-0">
+                  {item.step}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.3}>
+        <div className="text-center p-8 sm:p-10 rounded-2xl border border-border/40 bg-muted/10">
+          <h2 className="text-2xl font-bold text-foreground mb-3">Ready to stop chasing bank alerts?</h2>
+          <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
+            Events Kona is free to start and built for Nigerian organisers. Create your first event today.
+          </p>
+          <Button size="lg" asChild className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12">
+            <a href="https://eventskona.com/signup" target="_blank" rel="noopener noreferrer">
+              Create Your First Event
+              <ArrowRightIcon className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </ScrollReveal>
+
+    </div>
+  )
+}
+
+// ─── Events Kona Organiser Guide ──────────────────────────────────────────────
+
+function OrganiserGuideContent() {
+  return (
+    <div className="max-w-3xl mx-auto space-y-14">
+
+      <ScrollReveal>
+        <div className="space-y-5 text-lg text-muted-foreground leading-relaxed">
+          <p>
+            Events Kona is built for event organisers in Nigeria. Whether you run concerts, conferences, comedy nights, community meetups, or corporate events — this guide covers everything you need to know to get the most out of the platform.
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.1}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">What organisers can do on Events Kona</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              { title: "Create events", body: "Set up your event with a title, date, venue, description, and cover image in minutes." },
+              { title: "Multiple ticket types", body: "Create Regular, VIP, Early Bird, or any custom tier — each with its own price and capacity." },
+              { title: "Capacity control", body: "Set hard limits per ticket type. The system stops selling automatically when you hit capacity." },
+              { title: "Live sales dashboard", body: "See revenue, tickets sold, orders, and payout status updating in real time." },
+              { title: "QR code check-in", body: "Every ticket generates a unique QR code. Scan attendees at the door with any smartphone." },
+              { title: "Payouts to your bank", body: "Revenue goes directly to your Nigerian bank account after the event closes." },
+            ].map((item) => (
+              <div key={item.title} className="p-5 rounded-xl border border-border/40 bg-muted/10">
+                <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.15}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">Setting up your first event</h2>
+          <div className="space-y-3">
+            {[
+              { step: "1", title: "Sign up as an organiser", body: "Create your account at eventskona.com. Your organiser profile is set up instantly." },
+              { step: "2", title: "Click "Create Event"", body: "Fill in the event name, date and time, venue address, and a description. Add a cover image to make your event page stand out." },
+              { step: "3", title: "Add your ticket types", body: "Create at least one ticket type. Set the name (e.g. \"Regular Entry\"), price in Naira, and how many are available. Add more types for VIP, Early Bird, etc." },
+              { step: "4", title: "Publish and share", body: "Once published, your event gets a unique URL on Events Kona. Share it directly — it works perfectly on mobile for your attendees." },
+              { step: "5", title: "Monitor your dashboard", body: "Check in on sales anytime. Your dashboard shows revenue to date, tickets sold per type, capacity remaining, and individual orders." },
+            ].map((item) => (
+              <div key={item.step} className="flex gap-5 p-5 rounded-xl border border-border/40">
+                <div className="w-8 h-8 rounded-lg bg-[#7c3aed]/10 text-[#7c3aed] font-bold text-sm flex items-center justify-center flex-shrink-0">
+                  {item.step}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.2}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-5">How payments and payouts work</h2>
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Attendees pay through Paystack — the most trusted payment gateway in Nigeria. Every major bank, card, and transfer method is supported. Attendees never need to leave Events Kona to complete their purchase.
+            </p>
+            <p>
+              Events Kona charges <strong className="text-foreground">5.5% per ticket sold</strong>. There are no monthly fees, no listing fees, and no setup costs. You only pay when you earn.
+            </p>
+            <p>
+              After your event closes, your payout is processed to your registered Nigerian bank account. You can track your payout status directly from your organiser dashboard.
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.25}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-5">Checking in attendees on event day</h2>
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Every ticket purchased on Events Kona comes with a unique QR code, sent to the attendee&apos;s email and available in their account. On event day, open the Scan page in your organiser account on any smartphone and scan each QR code as attendees arrive.
+            </p>
+            <p>
+              The scanner validates each ticket in under a second and flags duplicates automatically. No special hardware needed — just your phone.
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.3}>
+        <div className="text-center p-8 sm:p-10 rounded-2xl border border-border/40 bg-muted/10">
+          <h2 className="text-2xl font-bold text-foreground mb-3">Start organising on Events Kona</h2>
+          <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
+            Free to get started. No monthly fees. Built for Nigerian organisers.
+          </p>
+          <Button size="lg" asChild className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12">
+            <a href="https://eventskona.com/signup" target="_blank" rel="noopener noreferrer">
+              Create Your First Event
+              <ArrowRightIcon className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </ScrollReveal>
+
+    </div>
+  )
+}
+
+// ─── Why Port Harcourt ────────────────────────────────────────────────────────
+
+function WhyPortHarcourtContent() {
+  return (
+    <div className="max-w-3xl mx-auto space-y-14">
+
+      <ScrollReveal>
+        <div className="space-y-5 text-lg text-muted-foreground leading-relaxed">
+          <p>
+            When we decided to launch Events Kona, the first question was not what to build — it was where to start. Nigeria has over 200 million people and dozens of cities with active event cultures. We could have aimed for Lagos first. It would have been the obvious move.
+          </p>
+          <p>
+            We chose Port Harcourt. Deliberately. Here is why.
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.1}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-5">Port Harcourt&apos;s event scene is bigger than people think</h2>
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Port Harcourt is Nigeria&apos;s oil capital, but it is also a cultural hub. The city hosts concerts, comedy shows, tech conferences, cultural festivals, youth gatherings, and corporate events every single week. The Garden City has a thriving event-going culture that consistently punches above its weight.
+            </p>
+            <p>
+              Yet most of these events are organised the same way they were ten years ago — WhatsApp flyers, bank transfer payments, and manual check-in. The infrastructure has not caught up with the energy.
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.15}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-5">It is home</h2>
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              App Guts is a Port Harcourt company. Our team is here. Our networks are here. When we talk to event organisers, we are talking to people in our community — people we know, whose events we attend, whose frustrations we share firsthand.
+            </p>
+            <p>
+              That proximity matters. It means we get feedback the same day. It means we can sit with an organiser before their event and fix a problem in real time. It means the platform improves at a pace that would be impossible if we started somewhere far from our roots.
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.2}>
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-5">Why starting local is the right strategy</h2>
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              There is a temptation in tech to launch everywhere at once and figure out the details later. We rejected that approach. A platform that tries to serve all of Nigeria immediately ends up serving no one particularly well.
+            </p>
+            <p>
+              By starting in Port Harcourt, we can focus our attention, build real relationships with organisers, respond to edge cases quickly, and establish trust before expanding. Every major event platform in the world — Eventbrite included — started in one city.
+            </p>
+            <p>
+              We are not trying to be a smaller version of Eventbrite. We are building something from the ground up for African communities, starting in the city we know best.
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.25}>
+        <div className="p-8 sm:p-10 rounded-2xl border border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-transparent">
+          <h2 className="text-2xl font-bold text-foreground mb-4">What comes next</h2>
+          <div className="space-y-3 text-muted-foreground leading-relaxed">
+            <p>
+              Port Harcourt is where Events Kona proves itself. Once we have built something that organisers and attendees in this city genuinely rely on, we will expand — to Abuja, Lagos, and beyond.
+            </p>
+            <p>
+              The goal is not speed. The goal is depth. A platform people trust takes longer to build than a platform people merely use. We are building for the long term.
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.3}>
+        <div className="text-center p-8 sm:p-10 rounded-2xl border border-border/40 bg-muted/10">
+          <h2 className="text-2xl font-bold text-foreground mb-3">Based in Port Harcourt? Join us.</h2>
+          <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
+            If you organise or attend events in Port Harcourt, Events Kona was built for you. Get started free today.
           </p>
           <Button size="lg" asChild className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 h-12">
             <a href="https://eventskona.com/signup" target="_blank" rel="noopener noreferrer">
