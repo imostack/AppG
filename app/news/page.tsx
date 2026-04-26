@@ -59,6 +59,22 @@ const newsArticles = [
     date: "April 2026",
   },
   {
+    slug: "what-we-saw-at-nigerian-events",
+    title: "What We Saw at Nigerian Events Changed Everything",
+    description: "We attended major events across Nigeria to study the ticketing experience. A Paystack receipt as a ticket. No QR codes. No validation. That night confirmed exactly why Events Kona needed to exist.",
+    badge: "Story",
+    badgeColor: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
+    date: "April 2026",
+  },
+  {
+    slug: "mayor-and-12-kings-2026",
+    title: "Mayor and the 12 Kings 2026: Port Harcourt's Biggest Comedy Night",
+    description: "Easter Monday, April 6, 2026. EUI Centre, GRA, Port Harcourt. 16 comedians, a packed house, a red carpet that generated real buzz, and the South-South at its finest.",
+    badge: "Event Recap",
+    badgeColor: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+    date: "April 2026",
+  },
+  {
     slug: "past-collaborations",
     title: "Past Collaborations",
     description: "Previous partnerships and initiatives from App Guts.",

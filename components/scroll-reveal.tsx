@@ -11,8 +11,10 @@ interface ScrollRevealProps {
 export function ScrollReveal({ children, delay = 0 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const el = ref.current
     if (!el) return
     const observer = new IntersectionObserver(
@@ -22,7 +24,7 @@ export function ScrollReveal({ children, delay = 0 }: ScrollRevealProps) {
           observer.disconnect()
         }
       },
-      { rootMargin: "-80px" }
+      { rootMargin: "-60px" }
     )
     observer.observe(el)
     return () => observer.disconnect()
@@ -31,12 +33,16 @@ export function ScrollReveal({ children, delay = 0 }: ScrollRevealProps) {
   return (
     <div
       ref={ref}
-      style={{
-        transitionDelay: `${delay}s`,
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(20px)",
-        transition: "opacity 0.6s ease, transform 0.6s ease",
-      }}
+      style={
+        mounted
+          ? {
+              transitionDelay: `${delay}s`,
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateY(0)" : "translateY(16px)",
+              transition: "opacity 0.55s ease, transform 0.55s ease",
+            }
+          : {}
+      }
     >
       {children}
     </div>
