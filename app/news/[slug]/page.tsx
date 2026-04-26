@@ -443,7 +443,7 @@ function OrganiserGuideContent() {
           <div className="space-y-3">
             {[
               { step: "1", title: "Sign up as an organiser", body: "Create your account at eventskona.com. Your organiser profile is set up instantly." },
-              { step: "2", title: "Click "Create Event"", body: "Fill in the event name, date and time, venue address, and a description. Add a cover image to make your event page stand out." },
+              { step: "2", title: 'Click "Create Event"', body: "Fill in the event name, date and time, venue address, and a description. Add a cover image to make your event page stand out." },
               { step: "3", title: "Add your ticket types", body: "Create at least one ticket type. Set the name (e.g. \"Regular Entry\"), price in Naira, and how many are available. Add more types for VIP, Early Bird, etc." },
               { step: "4", title: "Publish and share", body: "Once published, your event gets a unique URL on Events Kona. Share it directly — it works perfectly on mobile for your attendees." },
               { step: "5", title: "Monitor your dashboard", body: "Check in on sales anytime. Your dashboard shows revenue to date, tickets sold per type, capacity remaining, and individual orders." },
