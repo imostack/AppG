@@ -15,6 +15,11 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a href="/pricing" className="hover:text-foreground transition-colors">
+                  Pricing
+                </a>
+              </li>
+              <li>
                 <a href="https://eventskona.com/signup" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   Get Started Free
                 </a>

@@ -34,6 +34,13 @@ export function MobileNav() {
               Products
             </Link>
             <Link
+              href="/pricing"
+              className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-card transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Pricing
+            </Link>
+            <Link
               href="/#about"
               className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-card transition-colors"
               onClick={() => setIsOpen(false)}

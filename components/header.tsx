@@ -24,7 +24,7 @@ export function Header() {
                 width={180}
                 height={180}
                 priority
-                className={`h-14 w-auto sm:h-16 md:h-20 transition-opacity duration-300 group-hover:scale-105 ${
+                className={`h-8 w-auto sm:h-9 md:h-11 transition-opacity duration-300 group-hover:scale-105 ${
                   theme === "dark" ? "opacity-0 absolute" : "opacity-100"
                 }`}
               />
@@ -34,7 +34,7 @@ export function Header() {
                 width={180}
                 height={180}
                 priority
-                className={`h-14 w-auto sm:h-16 md:h-20 transition-opacity duration-300 group-hover:scale-105 ${
+                className={`h-8 w-auto sm:h-9 md:h-11 transition-opacity duration-300 group-hover:scale-105 ${
                   theme === "dark" ? "opacity-100" : "opacity-0 absolute"
                 }`}
               />
@@ -45,6 +45,7 @@ export function Header() {
           <nav className="hidden gap-1 md:flex">
             {[
               { label: "Products", href: "/#products" },
+              { label: "Pricing", href: "/pricing" },
               { label: "About", href: "/#about" },
               { label: "Contact", href: "/#contact" },
             ].map((item) => (
